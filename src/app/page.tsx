@@ -26,10 +26,14 @@ import altarImg from "../../public/altar-main.jpeg";
 import metropolitanImg from "../../public/metropolitan.webp";
 import tradition1Img from "../../public/tradition-1.jpeg";
 import tradition2Img from "../../public/tradition-2.jpeg";
+import nicholovosImg from "../../public/Grace Zachariah Mar Nicholovos.jpg";
+import vicarImg from "../../public/vicar.jpeg";
+import faithImg from "../../public/faith.webp";
 
 export default function Home() {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
   const [showFullMetropolitanBio, setShowFullMetropolitanBio] = useState(false);
+  const [showFullNicholovosBio, setShowFullNicholovosBio] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
   const fadeIn = {
@@ -77,8 +81,8 @@ export default function Home() {
           </div>
           
           <div className="hidden lg:flex space-x-10 font-outfit text-xs font-bold uppercase tracking-[0.2em]">
-            <a href="#about" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Our Faith</a>
-            <a href="#metropolitan" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Metropolitan</a>
+            <a href="#faith" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Our Faith</a>
+            <a href="#metropolitan" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Supreme Head</a>
             <a href="#tradition" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Tradition</a>
             <a href="#gallery" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Gallery</a>
             <a href="#worship" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Worship</a>
@@ -104,8 +108,8 @@ export default function Home() {
             >
               <div className="flex flex-col p-8 space-y-6 font-outfit text-xs font-bold uppercase tracking-[0.3em] text-sacral-blue">
                 {[
-                  { id: "about", label: "Our Faith" },
-                  { id: "metropolitan", label: "Metropolitan" },
+                  { id: "faith", label: "Our Faith" },
+                  { id: "metropolitan", label: "Supreme Head" },
                   { id: "tradition", label: "Tradition" },
                   { id: "gallery", label: "Gallery" },
                   { id: "worship", label: "Worship" },
@@ -127,18 +131,29 @@ export default function Home() {
       </nav>
 
       {/* Hero Section: Majestic Entrance */}
-      <section className="relative w-full h-[90vh] flex items-center justify-center overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/church-hero-new.jpeg"
-          className="absolute inset-0 w-full h-full object-cover scale-105 opacity-60"
-        >
-          <source src="/hero-bg.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-sacral-blue/60 via-sacral-blue/20 to-warm-white" />
+      <section className="relative w-full h-[90vh] flex items-center justify-center overflow-hidden bg-sacral-blue">
+        {/* Atmospheric Background Style */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-sacral-blue via-[#0d1b2a] to-sacral-blue" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(197,165,114,0.1),transparent_70%)]" />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3] 
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gold-primary/10 rounded-full blur-[120px]" 
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1.2, 1, 1.2],
+              opacity: [0.2, 0.4, 0.2] 
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-sacral-blue/40 rounded-full blur-[150px]" 
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-warm-white/10" />
         <div className="relative z-10 text-center px-6 max-w-5xl">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -186,7 +201,6 @@ export default function Home() {
       <section id="about" className="w-full py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn} className="text-center mb-20 md:mb-24">
-            <h2 className="text-gold-primary font-bold uppercase tracking-[0.4em] text-[10px] md:text-xs mb-6">Our Faith</h2>
             <h3 className="text-4xl md:text-7xl font-playfair font-bold text-sacral-blue mb-8">Our Church</h3>
           </motion.div>
 
@@ -194,17 +208,27 @@ export default function Home() {
             <motion.div {...fadeIn} className="space-y-8">
               <div className="text-deep-slate/80 leading-relaxed font-inter space-y-6">
                 <p className="text-2xl font-playfair italic text-sacral-blue border-l-4 border-gold-primary pl-8 py-2">
-                  Remain as a benevolent community of St. Thomas, one of the twelve apostles of Jesus Christ who came to India in AD 52.
+                  St. Peter and St. Paul&apos;s Syrian Orthodox Congregation, Victoria, British Columbia
                 </p>
                 <p>
-                  This is a community of Malankara Orthodox Christians. The Malankara Orthodox Church traces its roots to the arrival of St. Thomas in India and his evangelical mission.
+                  St. Peter and St. Paul&apos;s Syrian Orthodox Congregation in Victoria, British Columbia is a parish of the Malankara Orthodox Syrian Church under the Diocese of Canada.
                 </p>
                 <p>
-                  Our parish is presently located in Surrey at <span className="text-sacral-blue font-bold">15151 72 Ave Surrey, BC V3S 2G3</span>, with a revolving strength of 35 or more families. With the Intercession of our patron saint St. George, we continue to grow in faith and by the grace and blessings of our Lord Jesus Christ our needs and requirements are being met.
+                  The congregation was founded on February 4, 2023. At that time, it fell under the Southwest American Diocese, and permission to establish the congregation was granted by His Grace Thomas Mar Ivanios, the then Bishop of the Diocese of Southwest America. The venerable Fr. Zera Paul served as the first vicar.
                 </p>
                 <p>
-                  Our church is a member parish of the <span className="text-sacral-blue font-bold">South-West American Diocese</span> of the Malankara Orthodox Church. The Supreme Head of the church is the Catholicos of the East and Malankara Metropolitan enthroned on the Apostolic Throne of St. Thomas with headquarters at Devalokam, Kerala (India). The Church has a regional Diocesan Metropolitan headquartered in Houston USA. Our Diocese Metropolitan is <span className="text-sacral-blue font-bold">H.G. Thomas Mar Ivanios</span>. The Church, strictly follows the traditional Oriental Orthodox faith and liturgy.
+                  With the formation of the Diocese of Canada, the congregation came under the pastoral care of His Eminence Zacharias Mar Nicholovos, Metropolitan of the Northeast American Diocese, who oversees the Canadian Diocese.
                 </p>
+                <p>
+                  The current vicar is <span className="text-sacral-blue font-bold">M.C. Kuriakose Ramban, Mekkattil</span>.
+                </p>
+                
+                <div className="pt-8 border-t border-sacral-blue/10">
+                  <h4 className="text-gold-primary text-xs font-bold uppercase tracking-[0.3em] mb-4">Our Mission</h4>
+                  <p className="italic text-lg">
+                    &quot;The congregation was established to provide spiritual services to students arriving to study on Vancouver Island, and to serve the Orthodox faithful living in Victoria.&quot;
+                  </p>
+                </div>
               </div>
             </motion.div>
             
@@ -229,241 +253,249 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-32">
-            <motion.div {...fadeIn} className="p-12 rounded-[3rem] bg-sacral-blue text-white shadow-2xl relative overflow-hidden group">
-              <div className="absolute -top-10 -right-10 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Heart className="w-64 h-64" />
+
+        </div>
+      </section>
+
+      {/* Spiritual Leadership Section */}
+      <section id="metropolitan" className="w-full py-32 bg-sacral-blue/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-20">
+            <h2 className="text-gold-primary font-bold uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4">Our Spiritual Leadership</h2>
+            <h3 className="text-3xl md:text-6xl font-playfair font-bold text-sacral-blue">Guidance in Faith</h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+            {/* Supreme Head */}
+            <motion.div {...fadeIn} className="flex flex-col h-full bg-white rounded-[2rem] overflow-hidden shadow-xl border border-sacral-blue/5 group hover:shadow-2xl transition-premium">
+              <div className="relative h-[400px] overflow-hidden">
+                <Image 
+                  src={metropolitanImg} 
+                  alt="H.H. Baselios Marthoma Mathews III" 
+                  fill 
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+                  placeholder="blur"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-sacral-blue/90 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold mb-2">The Supreme Head</p>
+                  <h4 className="text-xl font-playfair font-bold text-white leading-tight">H.H. Baselios Marthoma Mathews III</h4>
+                </div>
               </div>
-              <h4 className="text-gold-primary text-xs font-bold uppercase tracking-[0.3em] mb-8">This is our invitation to you</h4>
-              <div className="space-y-6 text-lg text-white/80 leading-relaxed font-inter italic">
-                <p>
-                  &quot;At St George Malankara Orthodox Church, we invite everyone to come and worship with us, be part of the God&apos;s will and become the purpose of life.&quot;
-                </p>
-                <p>
-                  &quot;We do anything and everything to make this church a place where you feel welcome and comfortable.&quot;
-                </p>
+              <div className="p-8 flex flex-col flex-grow">
+                <div className={`space-y-4 text-deep-slate/70 text-sm leading-relaxed font-inter transition-all duration-700 overflow-hidden ${showFullMetropolitanBio ? "max-h-[1000px]" : "max-h-[120px]"}`}>
+                  <p className="font-bold text-sacral-blue/90">Present Catholicos of the East and Malankara Metropolitan.</p>
+                  <p>Enthroned in Oct 2021 at Parumala Church, succeeding Baselios Marthoma Paulose II.</p>
+                  {showFullMetropolitanBio && (
+                    <div className="space-y-4 pt-2">
+                       <p>A distinguished theologian with a Doctorate from Rome, His Holiness has established numerous charitable initiatives and continues to lead the global Orthodox community with wisdom and compassion.</p>
+                    </div>
+                  )}
+                </div>
+                <button 
+                  onClick={() => setShowFullMetropolitanBio(!showFullMetropolitanBio)}
+                  className="mt-6 flex items-center gap-2 text-gold-primary font-bold uppercase tracking-[0.2em] text-[10px] hover:text-sacral-blue transition-premium"
+                >
+                  {showFullMetropolitanBio ? "Show Less" : "Read Bio"}
+                  <ChevronRight className={`w-3 h-3 ${showFullMetropolitanBio ? "rotate-90" : ""}`} />
+                </button>
               </div>
             </motion.div>
 
-            <motion.div {...fadeIn} className="p-12 rounded-[3rem] glass border border-sacral-blue/5 flex flex-col justify-center">
-              <h4 className="text-sacral-blue text-xs font-bold uppercase tracking-[0.3em] mb-8">Nourishing the Soul</h4>
-              <div className="space-y-6 text-deep-slate/70 text-base leading-relaxed font-inter">
-                <p>
-                  We are at a stage where the church of God has so little influence over the world is because the world has so much influence over the church.
-                </p>
-                <p>
-                  Our church exists to glorify God through worshipping him. We gather together to worship God in the ways he has revealed in the Bible. Our practices are carefully drawn from and centered upon the Bible. Our worship services are a means of grace through which God speaks to us and transforms us by his Word.
+            {/* Diocese Metropolitan */}
+            <motion.div {...fadeIn} className="flex flex-col h-full bg-white rounded-[2rem] overflow-hidden shadow-xl border border-sacral-blue/5 group hover:shadow-2xl transition-premium">
+              <div className="relative h-[400px] overflow-hidden">
+                <Image 
+                  src={nicholovosImg} 
+                  alt="Metropolitan Zachariah Mar Nicholovos" 
+                  fill 
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-1000 group-hover:scale-110" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-sacral-blue/90 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold mb-2">Diocese Assistant Metropolitan</p>
+                  <h4 className="text-xl font-playfair font-bold text-white leading-tight">Metropolitan Zachariah Mar Nicholovos</h4>
+                </div>
+              </div>
+              <div className="p-8 flex flex-col flex-grow">
+                <div className={`space-y-4 text-deep-slate/70 text-sm leading-relaxed font-inter transition-all duration-700 overflow-hidden ${showFullNicholovosBio ? "max-h-[3000px]" : "max-h-[120px]"}`}>
+                  <p className="font-bold text-sacral-blue/90">Ruling Metropolitan of the Northeast American Diocese.</p>
+                  <p>Born into the Poothicote family in Mepral on August 13, 1959. Much of his spiritual upbringing centered around Saint John&apos;s Orthodox Church, Mepral.</p>
+                  
+                  {showFullNicholovosBio && (
+                    <div className="space-y-4 pt-2">
+                       <p>At the age of 9, he was called to the service of the Holy Altar. He was blessed to spend time with spiritual giants like Metropolitan Thoma Mar Dionysius, Metropolitan Thomas Mar Thimithios (later H.H. Catholicos Didymus I), and Rev. Fr. M. V. George (later Metropolitan Dr. Geevarghese Mar Osthathios).</p>
+                       <p>He completed his Bachelor of Divinity and Master of Theology from United Theological College, Bangalore. He was ordained to the Holy Diaconate on Jan 4, 1986, and to the Priesthood on May 16, 1990.</p>
+                       <p>Consecrated as Metropolitan on August 15, 1993, he has served as Assistant Metropolitan and now Ruling Metropolitan of the Northeast American Diocese since 2011.</p>
+                       <div className="pt-6 border-t border-sacral-blue/10">
+                        <h5 className="text-sacral-blue font-bold uppercase tracking-widest text-[10px] mb-4">Ecumenical Roles</h5>
+                        <ul className="space-y-2 text-xs">
+                          {[
+                            "President of the Dept of Ecumenical Relations (MOSC)",
+                            "Executive Committee Member - WCC",
+                            "Governing Board Member - NCCUSA",
+                            "Board of Trustees - St. Vladimir's Seminary",
+                            "Board of Directors - Church World Services"
+                          ].map((item, i) => (
+                            <li key={i} className="flex items-center gap-2">
+                              <div className="w-1 h-1 rounded-full bg-gold-primary" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                       </div>
+                    </div>
+                  )}
+                </div>
+                <button 
+                  onClick={() => setShowFullNicholovosBio(!showFullNicholovosBio)}
+                  className="mt-6 flex items-center gap-2 text-gold-primary font-bold uppercase tracking-[0.2em] text-[10px] hover:text-sacral-blue transition-premium"
+                >
+                  {showFullNicholovosBio ? "Show Less" : "Read Bio"}
+                  <ChevronRight className={`w-3 h-3 ${showFullNicholovosBio ? "rotate-90" : ""}`} />
+                </button>
+              </div>
+            </motion.div>
+
+            {/* The Vicar */}
+            <motion.div {...fadeIn} className="flex flex-col h-full bg-white rounded-[2rem] overflow-hidden shadow-xl border border-sacral-blue/5 group hover:shadow-2xl transition-premium">
+              <div className="relative h-[400px] overflow-hidden bg-sacral-blue/5">
+                <Image 
+                  src={vicarImg} 
+                  alt="Mekkattil M.C Kuriakose Rambachen" 
+                  fill 
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-contain transition-transform duration-1000 group-hover:scale-110" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-sacral-blue/90 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold mb-2">The Vicar</p>
+                  <h4 className="text-xl font-playfair font-bold text-white leading-tight">Mekkattil M.C Kuriakose Rambachen</h4>
+                </div>
+              </div>
+              <div className="p-8 flex flex-col flex-grow">
+                <p className="text-deep-slate/70 text-sm leading-relaxed font-inter">
+                  Leading our local congregation in Victoria with spiritual guidance and administrative oversight.
                 </p>
               </div>
             </motion.div>
           </div>
-
-          <motion.div 
-            {...fadeIn} 
-            className="w-full py-16 px-12 rounded-[4rem] bg-gold-primary text-sacral-blue text-center relative overflow-hidden"
-          >
-            <div className="relative z-10">
-              <h4 className="text-4xl md:text-5xl font-playfair font-bold mb-8">Welcome and be part of us</h4>
-              <p className="text-xl md:text-2xl font-inter font-medium max-w-4xl mx-auto leading-relaxed italic">
-                &quot;We care, share and work towards mutual support and supporting the community at large.&quot;
-              </p>
-            </div>
-            <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-              <div className="grid grid-cols-6 h-full w-full">
-                {Array.from({ length: 12 }).map((_, i) => (
-                  <div key={i} className="border-r border-sacral-blue/20 h-full" />
-                ))}
-              </div>
-            </div>
-          </motion.div>
         </div>
       </section>
 
-      {/* Our Metropolitan Section */}
-      <section id="metropolitan" className="w-full py-32 bg-sacral-blue/5">
+      {/* Faith Section */}
+      <section id="faith" className="w-full py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div 
-              {...fadeIn}
-              className="relative h-[600px] lg:h-[800px] rounded-[40px] overflow-hidden shadow-2xl"
-            >
+            <motion.div {...fadeIn} className="relative h-[600px] lg:h-[800px] rounded-[3rem] overflow-hidden shadow-2xl">
               <Image 
-                src={metropolitanImg} 
-                alt="H.G. Zachariah Mar Nicholovos" 
+                src={faithImg} 
+                alt="Our Faith" 
                 fill 
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-transform duration-1000 hover:scale-105" 
-                placeholder="blur"
+                className="object-cover transition-transform duration-1000 hover:scale-110" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-sacral-blue/80 via-transparent to-transparent" />
-              <div className="absolute bottom-12 left-12">
-                <p className="text-gold-primary text-xs uppercase tracking-[0.4em] font-bold mb-4">Our Metropolitan</p>
-                <h4 className="text-4xl md:text-5xl font-playfair font-bold text-white leading-tight">His Grace <br /> Zachariah Mar Nicholovos</h4>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-sacral-blue/60 via-transparent to-transparent" />
             </motion.div>
 
             <motion.div {...fadeIn} className="space-y-8">
               <div className="space-y-4">
-                <h3 className="text-gold-primary text-[10px] uppercase font-bold tracking-[0.4em]">Diocesan Leadership</h3>
-                <h4 className="text-3xl md:text-4xl font-playfair font-bold text-sacral-blue mb-6 leading-tight">
-                  Metropolitan of the <br /> 
-                  <span className="text-gold-primary italic">Northeast American Diocese</span>
-                </h4>
-                <div className="flex flex-col gap-3 border-l-4 border-gold-primary pl-6 py-2 mb-8">
-                  <p className="text-xs font-bold text-sacral-blue/60 uppercase tracking-widest leading-relaxed">
-                    Consecrated: Aug 15, 1993  |  Appointed: Feb 26, 2011  |  Enthroned: May 21, 2011
+                <h4 className="text-gold-primary text-[10px] uppercase font-bold tracking-[0.4em]">Our Core Values</h4>
+                <h3 className="text-3xl md:text-5xl font-playfair font-bold text-sacral-blue leading-tight mb-8">Our <span className="text-gold-primary italic">Faith</span></h3>
+              </div>
+
+              <div className="space-y-6 text-deep-slate/70 text-base leading-relaxed font-inter">
+                <p className="text-lg font-bold text-sacral-blue/90">
+                  Remain as a benevolent community of St. Thomas, one of the twelve apostles of Jesus Christ who came to India in AD 52.
+                </p>
+                <p>
+                  This is a community of Malankara Orthodox Christians. The Malankara Orthodox Church traces its roots to the arrival of St. Thomas in India and his evangelical mission.
+                </p>
+                <div className="p-8 rounded-[2rem] bg-sacral-blue/5 border-l-4 border-gold-primary">
+                  <p className="text-sacral-blue font-bold mb-2">St. George Malankara Orthodox Church</p>
+                  <p className="text-sm">Location: 15151 72 Ave Surrey, BC V3S 2G3</p>
+                  <p className="text-sm mt-2">
+                    With a revolving strength of 35 or more families and the Intercession of our patron saint St. George, we continue to grow in faith.
+                  </p>
+                </div>
+                <p>
+                  Our church is a member parish of the South-West American Diocese. The Supreme Head is the Catholicos of the East and Malankara Metropolitan with headquarters at Devalokam, Kerala. Our Diocese Metropolitan is H.G. Thomas Mar Ivanios.
+                </p>
+                
+                <div className="pt-8 space-y-4">
+                  <h5 className="text-sacral-blue font-bold uppercase tracking-widest text-xs">An Invitation to You</h5>
+                  <p>
+                    We invite everyone to come and worship with us, be part of God&apos;s will and become the purpose of life. We gathered together to worship God in the ways he has revealed in the Bible.
+                  </p>
+                  <p>
+                    We care, share and work towards mutual support and supporting the community at large. Welcome and be part of us.
                   </p>
                 </div>
               </div>
-
-              <div className={`space-y-6 text-deep-slate/70 text-base leading-relaxed font-inter transition-all duration-700 overflow-hidden ${showFullMetropolitanBio ? "max-h-[2000px]" : "max-h-[400px]"}`}>
-                <p>
-                  His Grace, Metropolitan Zachariah Mar Nicholovos was born on August 13, 1959 to the famous Poothicote family in Mepral. His boyhood name was Cheriyachen, and was the fourth of five children. Much of his spiritual upbringing centered around his home parish, Saint John&apos;s Orthodox Church in Mepral, Kerala, India. It is at this church, His Grace Thoma Mar Dionysius, Metropolitan of Niranam Diocese, called young Cheriyachen to the service of the Holy Altar at the young age of 9.
-                </p>
-                <p>
-                  This initiated a strong interest in aspects of Orthodox spirituality, and the overall life of the Church. Not only was he blessed to spend time with Metropolitan Thoma Mar Dionysius of Blessed Memory, but also with spiritual giants like His Grace, Metropolitan Thomas Mar Thimithios, and famous convention speaker Father M. V. George.
-                </p>
-                
-                {showFullMetropolitanBio && (
-                  <>
-                    <p>
-                      Upon finishing his high school education, he enrolled in Malabar Christian College for his undergraduate education. Later, he completed his Bachelors in Arts (English) from Saint Joseph College in Calicut. He joined United Theological College in Bangalore where he completed his Bachelor of Divinity and Master of Theology degree. He was ordained to the Holy Diaconate on January 4th, 1986 and to the Priesthood on May 16, 1990.
-                    </p>
-                    <p>
-                      On August 5, 1993, he was tonsured as a monk at Saint Thomas Orthodox Cathedral in Moovattupuzha. He was consecrated as Metropolitan on August 15, 1993. In 2002, he was appointed as the Assistant Metropolitan of the American Diocese, and later in February 2011 was appointed as the ruling Metropolitan of the Northeast American Diocese.
-                    </p>
-                    <div className="pt-8 border-t border-sacral-blue/10">
-                      <h5 className="text-sacral-blue font-bold uppercase tracking-widest text-xs mb-6">Additional Responsibilities</h5>
-                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-                        {[
-                          "President of Ecumenical Relations (MOSC)",
-                          "Executive Committee Member (WCC)",
-                          "Governing Board (NCCUSA)",
-                          "Board of Trustees (St. Vladimir's Seminary)",
-                          "Board of Directors (Church World Services)"
-                        ].map((item, i) => (
-                          <li key={i} className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 rounded-full bg-gold-primary" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </>
-                )}
-              </div>
-
-              {!showFullMetropolitanBio && (
-                <div className="h-24 -mt-24 pointer-events-none bg-gradient-to-t from-warm-white to-transparent" />
-              )}
-
-              <button 
-                onClick={() => setShowFullMetropolitanBio(!showFullMetropolitanBio)}
-                className="group flex items-center gap-3 text-gold-primary font-bold uppercase tracking-[0.2em] text-xs hover:text-sacral-blue transition-premium mt-8"
-              >
-                {showFullMetropolitanBio ? "Show Less" : "View More Details"}
-                <ChevronRight className={`w-4 h-4 transition-transform group-hover:translate-x-1 ${showFullMetropolitanBio ? "rotate-90" : ""}`} />
-              </button>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Tradition Section */}
+      {/* Tradition Section - Parish History & Oversight */}
       <section id="tradition" className="w-full py-32 bg-sacral-blue text-white overflow-hidden relative">
-        <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
-          <Image 
-            src={tradition1Img} 
-            alt="Pattern" 
-            fill 
-            sizes="33vw"
-            className="object-cover" 
-            placeholder="blur"
-          />
-        </div>
-        
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
             <motion.div {...fadeIn}>
-              <h2 className="text-gold-primary font-bold uppercase tracking-[0.4em] text-[10px] md:text-xs mb-6">Our Heritage</h2>
+              <h2 className="text-gold-primary font-bold uppercase tracking-[0.4em] text-[10px] md:text-xs mb-6">Ecclesiastical Oversight</h2>
               <h3 className="text-3xl md:text-6xl font-playfair font-bold mb-10 leading-tight">
-                An Apostolic Legacy <br />
-                <span className="text-gold-primary italic text-2xl md:text-6xl">Since 52 AD</span>
+                Our Parish <br />
+                <span className="text-gold-primary italic">St. Peter & St. Paul</span>
               </h3>
+              
               <div className="space-y-8 text-white/70 text-lg leading-relaxed font-inter">
                 <p>
-                  The Malankara Orthodox Syrian Church is an autocephalous Oriental Orthodox church centered in the Indian state of Kerala. It is one of the apostolic churches founded by <strong className="text-white">St. Thomas the Apostle</strong> in 52 AD.
+                  St. Peter and St. Paul Orthodox Syrian Church, Victoria is a growing faith community under the Canadian Diocese of the Malankara Orthodox Syrian Church.
                 </p>
-                <p>
-                  Rooted in the West Syriac liturgical tradition, we maintain the ancient faith of the undivided church. Under the spiritual leadership of the Catholicos of the East, our community thrives across the globe, bringing the beauty of Orthodox worship to the modern world.
+                <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 space-y-6">
+                  <div>
+                    <p className="text-gold-primary text-[10px] uppercase font-bold tracking-widest mb-1">Head Office</p>
+                    <p className="text-sm">Catholicate Palace, Devalokam, Kottayam, Kerala, India</p>
+                  </div>
+                  <div>
+                    <p className="text-gold-primary text-[10px] uppercase font-bold tracking-widest mb-1">Head of the Church</p>
+                    <p className="text-sm">H.H. Baselios Marthoma Mathews III, Catholicos of the East & Malankara Metropolitan</p>
+                  </div>
+                </div>
+                <p className="text-base text-white/50 italic">
+                  Serving Orthodox Christians and all who seek Christ in the Greater Victoria area.
                 </p>
-                <ul className="space-y-4 pt-4">
-                  {[
-                    "Liturgy of St. James — One of the oldest Christian liturgies.",
-                    "Autocephalous administration under the Catholicos of the East.",
-                    "Part of the global Oriental Orthodox communion.",
-                    "Preservation of West Syriac spiritual and musical heritage."
-                  ].map((item, i) => (
-                    <li key={i} className="flex items-center gap-4 text-sm font-bold tracking-wide">
-                      <div className="w-1.5 h-1.5 rounded-full bg-gold-primary" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </motion.div>
-            
-            <div className="relative h-[700px]">
-              <motion.div 
-                {...fadeIn}
-                className="absolute top-0 left-0 w-4/5 h-4/5 rounded-[3rem] overflow-hidden shadow-2xl z-20"
-              >
-                <Image 
-                  src={tradition2Img} 
-                  alt="Tradition" 
-                  fill 
-                  sizes="(max-width: 1024px) 80vw, 40vw"
-                  className="object-cover" 
-                  placeholder="blur"
-                />
-              </motion.div>
-              <motion.div 
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1, delay: 0.4 }}
-                className="absolute bottom-0 right-0 w-3/4 h-3/5 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-sacral-blue z-10"
-              >
-                <Image 
-                  src={tradition1Img} 
-                  alt="Rite" 
-                  fill 
-                  sizes="(max-width: 1024px) 75vw, 37vw"
-                  className="object-cover" 
-                  placeholder="blur"
-                />
-              </motion.div>
-            </div>
-          </div>
 
-          <div className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-10 rounded-[2rem] bg-white/5 border border-white/10">
-              <h4 className="text-xl font-bold mb-4 text-gold-primary">Ecumenical Relations</h4>
-              <p className="text-sm text-white/50 leading-relaxed">
-                Active member of the World Council of Churches and maintains strong ties with other Orthodox and Christian denominations worldwide.
-              </p>
-            </div>
-            <div className="p-10 rounded-[2.5rem] bg-gold-primary text-sacral-blue shadow-2xl shadow-gold-primary/20">
-              <h4 className="text-xl font-bold mb-4">Spiritual Head</h4>
-              <p className="text-sm font-bold mb-2">H.H. Baselios Marthoma Mathews III</p>
-              <p className="text-xs opacity-70">Enthroned as the Catholicos of the East & Malankara Metropolitan, leading millions in faith.</p>
-            </div>
-            <div className="p-10 rounded-[2rem] bg-white/5 border border-white/10">
-              <h4 className="text-xl font-bold mb-4 text-gold-primary">Global Presence</h4>
-              <p className="text-sm text-white/50 leading-relaxed">
-                From its base in Kottayam, India, the church has established dioceses across Americas, Europe, and the Pacific.
-              </p>
-            </div>
+            <motion.div {...fadeIn} className="space-y-10">
+              <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10">
+                <h4 className="text-gold-primary text-[10px] uppercase font-bold tracking-[0.4em] mb-6">Community & Membership</h4>
+                <p className="text-white/70 text-base leading-relaxed font-inter mb-4">
+                  Our congregation currently consists of 10 families, including eight resident families and additional members who have come as emigrants.
+                </p>
+                <p className="text-white/70 text-base leading-relaxed font-inter">
+                  A significant portion of our congregation members are students studying in local colleges, contributing to the vibrant growth of our parish.
+                </p>
+              </div>
+
+              <div className="p-10 rounded-[2.5rem] bg-gold-primary text-sacral-blue shadow-2xl shadow-gold-primary/20">
+                <h4 className="text-[10px] uppercase font-bold tracking-[0.4em] mb-6 font-bold">Worship & Liturgical Life</h4>
+                <div className="space-y-4">
+                  <p className="font-bold leading-relaxed">
+                    Since its inception, the congregation has maintained one Holy Qurbana (Holy Communion) per month without interruption.
+                  </p>
+                  <p className="text-sm leading-relaxed opacity-80">
+                    Currently, worship is offered in the auditorium of the Ukrainian St. Nicholas Catholic Church in Victoria, BC.
+                  </p>
+                  <p className="text-sm font-bold pt-2">
+                    Note: Our Vicar, MC Kuriakose Rambachen, travels from the St. George Malankara Orthodox Church in Surrey to offer Holy Qurbana here, requiring travel by ferry.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -477,12 +509,13 @@ export default function Home() {
           </div>
           
           <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-            {(showAllPhotos 
-              ? [2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23] 
-              : [2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
-            ).map((num) => (
+            {[
+              "tradition-1",
+              "tradition-2",
+              2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23
+            ].slice(0, showAllPhotos ? undefined : 8).map((img) => (
               <motion.div 
-                key={num}
+                key={img}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -490,8 +523,8 @@ export default function Home() {
                 className="relative rounded-[2rem] overflow-hidden shadow-xl hover:shadow-2xl transition-premium break-inside-avoid"
               >
                 <Image 
-                  src={`/gallery-${num}.jpeg`} 
-                  alt={`Church Life ${num}`}
+                  src={typeof img === "number" ? `/gallery-${img}.jpeg` : `/${img}.jpeg`} 
+                  alt={`Church Life ${img}`}
                   width={600}
                   height={800}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -584,7 +617,7 @@ export default function Home() {
               <div className="space-y-8 relative z-10">
                 <div className="group/item">
                   <p className="text-gold-light/50 text-[10px] uppercase font-bold tracking-widest mb-2">The Vicar</p>
-                  <h5 className="text-2xl font-playfair font-bold group-hover/item:text-gold-primary transition-colors">V. Rev. Fr. M.C Kuriakose Ramban</h5>
+                  <h5 className="text-2xl font-playfair font-bold group-hover/item:text-gold-primary transition-colors">Mekkattil M.C Kuriakose Rambachen</h5>
                   <a href="tel:7782370597" className="text-lg font-outfit text-white/80 hover:text-white transition-colors flex items-center gap-2 mt-1">
                     <Phone className="w-4 h-4 text-gold-primary" /> 778-237-0597
                   </a>
