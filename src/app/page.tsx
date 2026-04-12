@@ -20,6 +20,13 @@ import {
   X
 } from "lucide-react";
 
+// Static imports for better image optimization (blur placeholders, automatic sizing)
+import logoImg from "../../public/logo.jpeg";
+import altarImg from "../../public/altar-main.jpeg";
+import metropolitanImg from "../../public/metropolitan.webp";
+import tradition1Img from "../../public/tradition-1.jpeg";
+import tradition2Img from "../../public/tradition-2.jpeg";
+
 export default function Home() {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
   const [showFullMetropolitanBio, setShowFullMetropolitanBio] = useState(false);
@@ -50,10 +57,13 @@ export default function Home() {
           <div className="flex items-center space-x-3">
             <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-gold-primary/20 shadow-lg transition-premium hover:scale-110">
               <Image 
-                src="/logo.jpeg" 
+                src={logoImg} 
                 alt="Church Logo" 
                 fill 
+                priority
+                sizes="(max-width: 768px) 40px, 48px"
                 className="object-cover"
+                placeholder="blur"
               />
             </div>
             <div className="flex flex-col">
@@ -123,6 +133,7 @@ export default function Home() {
           muted
           loop
           playsInline
+          poster="/church-hero-new.jpeg"
           className="absolute inset-0 w-full h-full object-cover scale-105 opacity-60"
         >
           <source src="/hero-bg.mp4" type="video/mp4" />
@@ -202,10 +213,13 @@ export default function Home() {
               className="relative h-[500px] lg:h-[700px] rounded-[40px] overflow-hidden shadow-3xl"
             >
               <Image 
-                src="/altar-main.jpeg" 
+                src={altarImg} 
                 alt="Holy Altar" 
                 fill 
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover" 
+                placeholder="blur"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-sacral-blue/60 via-transparent to-transparent" />
               <div className="absolute bottom-12 left-12 right-12 text-white">
@@ -274,10 +288,12 @@ export default function Home() {
               className="relative h-[600px] lg:h-[800px] rounded-[40px] overflow-hidden shadow-2xl"
             >
               <Image 
-                src="/metropolitan.webp" 
+                src={metropolitanImg} 
                 alt="H.G. Zachariah Mar Nicholovos" 
                 fill 
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-transform duration-1000 hover:scale-105" 
+                placeholder="blur"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-sacral-blue/80 via-transparent to-transparent" />
               <div className="absolute bottom-12 left-12">
@@ -356,7 +372,14 @@ export default function Home() {
       {/* Tradition Section */}
       <section id="tradition" className="w-full py-32 bg-sacral-blue text-white overflow-hidden relative">
         <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
-          <Image src="/tradition-1.jpeg" alt="Pattern" fill className="object-cover" />
+          <Image 
+            src={tradition1Img} 
+            alt="Pattern" 
+            fill 
+            sizes="33vw"
+            className="object-cover" 
+            placeholder="blur"
+          />
         </div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -395,7 +418,14 @@ export default function Home() {
                 {...fadeIn}
                 className="absolute top-0 left-0 w-4/5 h-4/5 rounded-[3rem] overflow-hidden shadow-2xl z-20"
               >
-                <Image src="/tradition-2.jpeg" alt="Tradition" fill className="object-cover" />
+                <Image 
+                  src={tradition2Img} 
+                  alt="Tradition" 
+                  fill 
+                  sizes="(max-width: 1024px) 80vw, 40vw"
+                  className="object-cover" 
+                  placeholder="blur"
+                />
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: 50 }}
@@ -404,7 +434,14 @@ export default function Home() {
                 transition={{ duration: 1, delay: 0.4 }}
                 className="absolute bottom-0 right-0 w-3/4 h-3/5 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-sacral-blue z-10"
               >
-                <Image src="/tradition-1.jpeg" alt="Rite" fill className="object-cover" />
+                <Image 
+                  src={tradition1Img} 
+                  alt="Rite" 
+                  fill 
+                  sizes="(max-width: 1024px) 75vw, 37vw"
+                  className="object-cover" 
+                  placeholder="blur"
+                />
               </motion.div>
             </div>
           </div>
@@ -457,6 +494,7 @@ export default function Home() {
                   alt={`Church Life ${num}`}
                   width={600}
                   height={800}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="w-full object-cover transition-transform duration-700 hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-sacral-blue/40 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500" />
@@ -587,11 +625,12 @@ export default function Home() {
               <div className="flex items-center space-x-4 mb-10">
                 <div className="w-16 h-16 rounded-full overflow-hidden border border-gold-primary/30 shadow-2xl">
                   <Image 
-                    src="/logo.jpeg" 
+                    src={logoImg} 
                     alt="Footer Logo" 
-                    width={64}
-                    height={64}
+                    fill
+                    sizes="64px"
                     className="object-cover"
+                    placeholder="blur"
                   />
                 </div>
                 <div className="flex flex-col">
