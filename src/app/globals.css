@@ -1,26 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #D4AF37;
-  --color-sacral-blue: #1A202C;
-  --color-warm-white: #FBFAF8;
-  --color-deep-slate: #2D3748;
+  --color-gold-primary: #D4AF37;
+  --color-gold-light: #F1E5AC;
+  --color-gold-dark: #A67C00;
+  --color-sacral-blue: #0A1128;
+  --color-sacral-blue-light: #1C2541;
+  --color-warm-white: #FEF9F3;
+  --color-deep-slate: #1F2937;
   
   --font-playfair: "Playfair Display", serif;
   --font-inter: "Inter", sans-serif;
+  --font-outfit: "Outfit", sans-serif;
 }
 
 :root {
-  --background: #FBFAF8;
-  --foreground: #1A202C;
+  --background: #FEF9F3;
+  --foreground: #0A1128;
   --accent: #D4AF37;
+  --accent-secondary: #0A1128;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0F172A;
-    --foreground: #F8FAFC;
-    --accent: #EAB308;
+    --background: #0A1128;
+    --foreground: #FEF9F3;
+    --accent: #D4AF37;
+    --accent-secondary: #F1E5AC;
   }
 }
 
@@ -30,6 +36,10 @@ body {
   font-family: var(--font-inter);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-playfair);
 }
 
 .text-gold {
@@ -44,20 +54,57 @@ body {
   font-family: var(--font-playfair);
 }
 
-/* Glassmorphism utility */
+.font-outfit {
+  font-family: var(--font-outfit);
+}
+
+/* Glassmorphism */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Custom fade-in animations */
+.glass-dark {
+  background: rgba(10, 17, 40, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Animations */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
 .animate-fade-in {
-  animation: fadeIn 1s ease-out forwards;
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hover Effects */
+.hover-gold-glow:hover {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+  transform: translateY(-2px);
+}
+
+.transition-premium {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Gradient text */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #F1E5AC 50%, #A67C00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
