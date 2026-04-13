@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
@@ -24,8 +24,6 @@ import {
 import logoImg from "../../public/logo.jpeg";
 import altarImg from "../../public/altar-main.jpeg";
 import metropolitanImg from "../../public/metropolitan.webp";
-import tradition1Img from "../../public/tradition-1.jpeg";
-import tradition2Img from "../../public/tradition-2.jpeg";
 import nicholovosImg from "../../public/Grace Zachariah Mar Nicholovos.jpg";
 import vicarImg from "../../public/vicar.jpeg";
 import faithImg from "../../public/faith.webp";
@@ -35,6 +33,16 @@ export default function Home() {
   const [showFullMetropolitanBio, setShowFullMetropolitanBio] = useState(false);
   const [showFullNicholovosBio, setShowFullNicholovosBio] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Handle scroll for navbar theme
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   
   const fadeIn = {
     initial: { opacity: 0, y: 30 },
@@ -56,8 +64,8 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center bg-warm-white text-sacral-blue selection:bg-gold-primary/30">
       {/* Premium Navigation */}
-      <nav className="fixed top-0 w-full z-50 glass border-b border-sacral-blue/5 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <nav className={`fixed top-0 w-full z-50 transition-premium ${isScrolled ? "glass-dark border-b border-white/5 shadow-2xl py-2" : "bg-transparent py-4"}`}>
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-gold-primary/20 shadow-lg transition-premium hover:scale-110">
               <Image 
@@ -71,7 +79,7 @@ export default function Home() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="font-playfair font-bold text-xs md:text-base tracking-tight leading-none">
+              <span className="font-playfair font-bold text-xs md:text-base tracking-tight leading-none text-white transition-premium">
                 ST. PETER & ST. PAUL
               </span>
               <span className="text-[10px] md:text-[10px] uppercase tracking-widest text-gold-primary font-bold">
@@ -80,7 +88,7 @@ export default function Home() {
             </div>
           </div>
           
-          <div className="hidden lg:flex space-x-10 font-outfit text-xs font-bold uppercase tracking-[0.2em]">
+          <div className="hidden lg:flex space-x-10 font-outfit text-xs font-bold uppercase tracking-[0.2em] text-white/80">
             <a href="#faith" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Our Faith</a>
             <a href="#metropolitan" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Supreme Head</a>
             <a href="#tradition" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Tradition</a>
@@ -91,7 +99,7 @@ export default function Home() {
 
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden w-10 h-10 flex items-center justify-center text-sacral-blue"
+            className="lg:hidden w-10 h-10 flex items-center justify-center text-white"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -376,9 +384,6 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-8 flex flex-col flex-grow">
-                <p className="text-deep-slate/70 text-sm leading-relaxed font-inter">
-                  Leading our local congregation in Victoria with spiritual guidance and administrative oversight.
-                </p>
               </div>
             </motion.div>
           </div>
@@ -389,7 +394,7 @@ export default function Home() {
       <section id="faith" className="w-full py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div {...fadeIn} className="relative h-[600px] lg:h-[800px] rounded-[3rem] overflow-hidden shadow-2xl">
+            <motion.div {...fadeIn} className="relative h-[400px] lg:h-[500px] rounded-[3rem] overflow-hidden shadow-2xl">
               <Image 
                 src={faithImg} 
                 alt="Our Faith" 
@@ -413,25 +418,28 @@ export default function Home() {
                 <p>
                   This is a community of Malankara Orthodox Christians. The Malankara Orthodox Church traces its roots to the arrival of St. Thomas in India and his evangelical mission.
                 </p>
-                <div className="p-8 rounded-[2rem] bg-sacral-blue/5 border-l-4 border-gold-primary">
-                  <p className="text-sacral-blue font-bold mb-2">St. George Malankara Orthodox Church</p>
-                  <p className="text-sm">Location: 15151 72 Ave Surrey, BC V3S 2G3</p>
-                  <p className="text-sm mt-2">
-                    With a revolving strength of 35 or more families and the Intercession of our patron saint St. George, we continue to grow in faith.
-                  </p>
-                </div>
-                <p>
-                  Our church is a member parish of the South-West American Diocese. The Supreme Head is the Catholicos of the East and Malankara Metropolitan with headquarters at Devalokam, Kerala. Our Diocese Metropolitan is H.G. Thomas Mar Ivanios.
-                </p>
                 
-                <div className="pt-8 space-y-4">
-                  <h5 className="text-sacral-blue font-bold uppercase tracking-widest text-xs">An Invitation to You</h5>
+                <div className="space-y-6">
+                  <div className="p-8 rounded-[2rem] bg-sacral-blue/5 border-l-4 border-gold-primary">
+                    <p className="text-sacral-blue font-bold mb-2">St. George Malankara Orthodox Church</p>
+                    <p className="text-sm">Location: 15151 72 Ave Surrey, BC V3S 2G3</p>
+                    <p className="text-sm mt-2">
+                      With a revolving strength of 35 or more families and the Intercession of our patron saint St. George, we continue to grow in faith.
+                    </p>
+                  </div>
                   <p>
-                    We invite everyone to come and worship with us, be part of God&apos;s will and become the purpose of life. We gathered together to worship God in the ways he has revealed in the Bible.
+                    Our church is a member parish of the South-West American Diocese. The Supreme Head is the Catholicos of the East and Malankara Metropolitan with headquarters at Devalokam, Kerala. Our Diocese Metropolitan is H.G. Thomas Mar Ivanios.
                   </p>
-                  <p>
-                    We care, share and work towards mutual support and supporting the community at large. Welcome and be part of us.
-                  </p>
+                  
+                  <div className="pt-8 space-y-4">
+                    <h5 className="text-sacral-blue font-bold uppercase tracking-widest text-xs">An Invitation to You</h5>
+                    <p>
+                      We invite everyone to come and worship with us, be part of God&apos;s will and become the purpose of life. We gathered together to worship God in the ways he has revealed in the Bible.
+                    </p>
+                    <p>
+                      We care, share and work towards mutual support and supporting the community at large. Welcome and be part of us.
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -626,13 +634,15 @@ export default function Home() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-white/10">
                   <div>
                     <p className="text-gold-light/50 text-[10px] uppercase font-bold tracking-widest mb-1">Trustee</p>
-                    <a href="tel:+12507101874" className="text-sm font-bold hover:text-gold-primary transition-colors flex items-center gap-2">
+                    <p className="text-sm font-bold text-white mb-1">Varughese Koshy</p>
+                    <a href="tel:+12507101874" className="text-xs text-white/70 hover:text-gold-primary transition-colors flex items-center gap-2">
                        +1 (250) 710-1874
                     </a>
                   </div>
                   <div>
                     <p className="text-gold-light/50 text-[10px] uppercase font-bold tracking-widest mb-1">Secretary</p>
-                    <a href="tel:+17785353885" className="text-sm font-bold hover:text-gold-primary transition-colors flex items-center gap-2">
+                    <p className="text-sm font-bold text-white mb-1">Ashish Philip Cheriyan</p>
+                    <a href="tel:+17785353885" className="text-xs text-white/70 hover:text-gold-primary transition-colors flex items-center gap-2">
                        +1 (778) 535-3885
                     </a>
                   </div>
@@ -656,7 +666,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-4 mb-10">
-                <div className="w-16 h-16 rounded-full overflow-hidden border border-gold-primary/30 shadow-2xl">
+                <div className="relative flex-shrink-0 w-16 h-16 rounded-full overflow-hidden border border-gold-primary/30 shadow-2xl">
                   <Image 
                     src={logoImg} 
                     alt="Footer Logo" 
@@ -714,13 +724,13 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">
+          {/* <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/20 text-[10px] font-bold uppercase tracking-[0.3em]">
             <p>© 2026 St. Peter & St. Paul Orthodox Syrian Church. All rights reserved.</p>
             <div className="flex gap-8">
               <a href="#" className="hover:text-white transition-premium">Privacy Policy</a>
               <a href="#" className="hover:text-white transition-premium">Terms of Service</a>
             </div>
-          </div>
+          </div> */}
         </div>
       </footer>
     </main>
