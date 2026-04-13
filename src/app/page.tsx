@@ -186,7 +186,7 @@ export default function Home() {
             transition={{ delay: 0.6, duration: 1 }}
             className="text-lg md:text-xl text-white/90 font-inter mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            Welcome to the St. Peter and St. Paul Orthodox Syrian Church in Victoria, BC. 
+            Welcome to the St. Peter and St. Paul Orthodox Syrian Congregation in Victoria, BC. 
             A community preserving the timeless faith established by St. Thomas.
           </motion.p>
           <motion.div 
@@ -209,7 +209,7 @@ export default function Home() {
       <section id="about" className="w-full py-32 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div {...fadeIn} className="text-center mb-20 md:mb-24">
-            <h3 className="text-4xl md:text-7xl font-playfair font-bold text-sacral-blue mb-8">Our Church</h3>
+            <h3 className="text-4xl md:text-7xl font-playfair font-bold text-sacral-blue mb-8">Our Congregation</h3>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-32">
@@ -242,7 +242,7 @@ export default function Home() {
             
             <motion.div 
               {...fadeIn}
-              className="relative h-[500px] lg:h-[700px] rounded-[40px] overflow-hidden shadow-3xl"
+              className="relative h-[500px] lg:h-[700px] rounded-[40px] overflow-hidden shadow-3xl group"
             >
               <Image 
                 src={altarImg} 
@@ -250,7 +250,7 @@ export default function Home() {
                 fill 
                 priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover" 
+                className="object-cover transition-transform duration-1000 group-hover:scale-110" 
                 placeholder="blur"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-sacral-blue/60 via-transparent to-transparent" />
@@ -293,21 +293,10 @@ export default function Home() {
               </div>
               <div className="p-8 flex flex-col flex-grow">
                 <div className={`space-y-4 text-deep-slate/70 text-sm leading-relaxed font-inter transition-all duration-700 overflow-hidden ${showFullMetropolitanBio ? "max-h-[1000px]" : "max-h-[120px]"}`}>
-                  <p className="font-bold text-sacral-blue/90">Present Catholicos of the East and Malankara Metropolitan.</p>
-                  <p>Enthroned in Oct 2021 at Parumala Church, succeeding Baselios Marthoma Paulose II.</p>
-                  {showFullMetropolitanBio && (
-                    <div className="space-y-4 pt-2">
-                       <p>A distinguished theologian with a Doctorate from Rome, His Holiness has established numerous charitable initiatives and continues to lead the global Orthodox community with wisdom and compassion.</p>
-                    </div>
-                  )}
+                  <p className="font-extrabold text-sacral-blue/90">Present Catholicos of the East and Malankara Metropolitan.</p>
+
                 </div>
-                <button 
-                  onClick={() => setShowFullMetropolitanBio(!showFullMetropolitanBio)}
-                  className="mt-6 flex items-center gap-2 text-gold-primary font-bold uppercase tracking-[0.2em] text-[10px] hover:text-sacral-blue transition-premium"
-                >
-                  {showFullMetropolitanBio ? "Show Less" : "Read Bio"}
-                  <ChevronRight className={`w-3 h-3 ${showFullMetropolitanBio ? "rotate-90" : ""}`} />
-                </button>
+                
               </div>
             </motion.div>
 
@@ -323,47 +312,17 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-sacral-blue/90 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
-                  <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold mb-2">Diocese Assistant Metropolitan</p>
+                  <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold mb-2">Assistant Metropolitan of Canada Diocese</p>
                   <h4 className="text-xl font-playfair font-bold text-white leading-tight">Metropolitan Zachariah Mar Nicholovos</h4>
                 </div>
               </div>
               <div className="p-8 flex flex-col flex-grow">
                 <div className={`space-y-4 text-deep-slate/70 text-sm leading-relaxed font-inter transition-all duration-700 overflow-hidden ${showFullNicholovosBio ? "max-h-[3000px]" : "max-h-[120px]"}`}>
-                  <p className="font-bold text-sacral-blue/90">Ruling Metropolitan of the Northeast American Diocese.</p>
-                  <p>Born into the Poothicote family in Mepral on August 13, 1959. Much of his spiritual upbringing centered around Saint John&apos;s Orthodox Church, Mepral.</p>
-                  
-                  {showFullNicholovosBio && (
-                    <div className="space-y-4 pt-2">
-                       <p>At the age of 9, he was called to the service of the Holy Altar. He was blessed to spend time with spiritual giants like Metropolitan Thoma Mar Dionysius, Metropolitan Thomas Mar Thimithios (later H.H. Catholicos Didymus I), and Rev. Fr. M. V. George (later Metropolitan Dr. Geevarghese Mar Osthathios).</p>
-                       <p>He completed his Bachelor of Divinity and Master of Theology from United Theological College, Bangalore. He was ordained to the Holy Diaconate on Jan 4, 1986, and to the Priesthood on May 16, 1990.</p>
-                       <p>Consecrated as Metropolitan on August 15, 1993, he has served as Assistant Metropolitan and now Ruling Metropolitan of the Northeast American Diocese since 2011.</p>
-                       <div className="pt-6 border-t border-sacral-blue/10">
-                        <h5 className="text-sacral-blue font-bold uppercase tracking-widest text-[10px] mb-4">Ecumenical Roles</h5>
-                        <ul className="space-y-2 text-xs">
-                          {[
-                            "President of the Dept of Ecumenical Relations (MOSC)",
-                            "Executive Committee Member - WCC",
-                            "Governing Board Member - NCCUSA",
-                            "Board of Trustees - St. Vladimir's Seminary",
-                            "Board of Directors - Church World Services"
-                          ].map((item, i) => (
-                            <li key={i} className="flex items-center gap-2">
-                              <div className="w-1 h-1 rounded-full bg-gold-primary" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                       </div>
-                    </div>
-                  )}
+                  <p className="font-extrabold text-sacral-blue/90">Ruling Metropolitan of the Northeast American Diocese.</p>
+                 
+                
                 </div>
-                <button 
-                  onClick={() => setShowFullNicholovosBio(!showFullNicholovosBio)}
-                  className="mt-6 flex items-center gap-2 text-gold-primary font-bold uppercase tracking-[0.2em] text-[10px] hover:text-sacral-blue transition-premium"
-                >
-                  {showFullNicholovosBio ? "Show Less" : "Read Bio"}
-                  <ChevronRight className={`w-3 h-3 ${showFullNicholovosBio ? "rotate-90" : ""}`} />
-                </button>
+               
               </div>
             </motion.div>
 
@@ -420,13 +379,7 @@ export default function Home() {
                 </p>
                 
                 <div className="space-y-6">
-                  <div className="p-8 rounded-[2rem] bg-sacral-blue/5 border-l-4 border-gold-primary">
-                    <p className="text-sacral-blue font-bold mb-2">St. George Malankara Orthodox Church</p>
-                    <p className="text-sm">Location: 15151 72 Ave Surrey, BC V3S 2G3</p>
-                    <p className="text-sm mt-2">
-                      With a revolving strength of 35 or more families and the Intercession of our patron saint St. George, we continue to grow in faith.
-                    </p>
-                  </div>
+                
                   <p>
                     Our church is a member parish of the South-West American Diocese. The Supreme Head is the Catholicos of the East and Malankara Metropolitan with headquarters at Devalokam, Kerala. Our Diocese Metropolitan is H.G. Thomas Mar Ivanios.
                   </p>
@@ -460,50 +413,13 @@ export default function Home() {
               
               <div className="space-y-8 text-white/70 text-lg leading-relaxed font-inter">
                 <p>
-                  St. Peter and St. Paul Orthodox Syrian Church, Victoria is a growing faith community under the Canadian Diocese of the Malankara Orthodox Syrian Church.
+                  St. Peter and St. Paul Orthodox Syrian Congregation, Victoria is a growing faith community under the Canada Diocese of the Malankara Orthodox Syrian Church.
                 </p>
-                <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 space-y-6">
-                  <div>
-                    <p className="text-gold-primary text-[10px] uppercase font-bold tracking-widest mb-1">Head Office</p>
-                    <p className="text-sm">Catholicate Palace, Devalokam, Kottayam, Kerala, India</p>
-                  </div>
-                  <div>
-                    <p className="text-gold-primary text-[10px] uppercase font-bold tracking-widest mb-1">Head of the Church</p>
-                    <p className="text-sm">H.H. Baselios Marthoma Mathews III, Catholicos of the East & Malankara Metropolitan</p>
-                  </div>
-                </div>
-                <p className="text-base text-white/50 italic">
-                  Serving Orthodox Christians and all who seek Christ in the Greater Victoria area.
-                </p>
+               
               </div>
             </motion.div>
 
-            <motion.div {...fadeIn} className="space-y-10">
-              <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10">
-                <h4 className="text-gold-primary text-[10px] uppercase font-bold tracking-[0.4em] mb-6">Community & Membership</h4>
-                <p className="text-white/70 text-base leading-relaxed font-inter mb-4">
-                  Our congregation currently consists of 10 families, including eight resident families and additional members who have come as emigrants.
-                </p>
-                <p className="text-white/70 text-base leading-relaxed font-inter">
-                  A significant portion of our congregation members are students studying in local colleges, contributing to the vibrant growth of our parish.
-                </p>
-              </div>
-
-              <div className="p-10 rounded-[2.5rem] bg-gold-primary text-sacral-blue shadow-2xl shadow-gold-primary/20">
-                <h4 className="text-[10px] uppercase font-bold tracking-[0.4em] mb-6 font-bold">Worship & Liturgical Life</h4>
-                <div className="space-y-4">
-                  <p className="font-bold leading-relaxed">
-                    Since its inception, the congregation has maintained one Holy Qurbana (Holy Communion) per month without interruption.
-                  </p>
-                  <p className="text-sm leading-relaxed opacity-80">
-                    Currently, worship is offered in the auditorium of the Ukrainian St. Nicholas Catholic Church in Victoria, BC.
-                  </p>
-                  <p className="text-sm font-bold pt-2">
-                    Note: Our Vicar, MC Kuriakose Rambachen, travels from the St. George Malankara Orthodox Church in Surrey to offer Holy Qurbana here, requiring travel by ferry.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+           
           </div>
         </div>
       </section>
@@ -520,7 +436,7 @@ export default function Home() {
             {[
               "tradition-1",
               "tradition-2",
-              2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23
+              2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21
             ].slice(0, showAllPhotos ? undefined : 8).map((img) => (
               <motion.div 
                 key={img}
@@ -559,62 +475,40 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-20">
             <h2 className="text-gold-primary font-bold uppercase tracking-[0.4em] text-xs mb-4 text-center">Worship and Liturgical Life</h2>
-            <h3 className="text-4xl md:text-6xl font-playfair font-bold text-center mb-8">Sacramental Journey</h3>
-            <div className="max-w-3xl mx-auto text-deep-slate/70 text-lg leading-relaxed font-inter space-y-6">
-              <p>
-                Since its inception, the congregation has maintained one Holy Qurbana (Holy Communion) per month without interruption. In the beginning, a respectable service was established and has continued faithfully.
-              </p>
-              <p>
-                Due to not having a dedicated church building, Holy Communion has been conducted in various rented locations. Currently, worship is being offered in the Ukrainian St. Nicholas Catholic Church.
-              </p>
-            </div>
+            
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="space-y-8">
-              <div className="p-8 rounded-3xl bg-white shadow-xl shadow-sacral-blue/5 border border-sacral-blue/5 group hover:border-gold-primary/20 transition-premium">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-sacral-blue flex items-center justify-center text-white flex-shrink-0 group-hover:scale-110 transition-premium">
-                    <Clock className="w-8 h-8" />
+              <div className="p-12 rounded-[2.5rem] bg-white shadow-2xl shadow-sacral-blue/5 border border-sacral-blue/5 group hover:border-gold-primary/20 transition-premium flex flex-col justify-center">
+                <div className="flex items-start gap-8">
+                  <div className="w-20 h-20 rounded-3xl bg-gold-primary flex items-center justify-center text-white flex-shrink-0 group-hover:scale-110 transition-premium shadow-lg shadow-gold-primary/20">
+                    <MapPin className="w-10 h-10" />
                   </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2 uppercase tracking-widest text-xs text-gold-dark">Time</h4>
-                    <p className="text-2xl font-playfair font-bold text-sacral-blue mb-1">
-                      Saturday, April 11
-                    </p>
-                    <p className="text-lg text-deep-slate/60 font-medium">09:30 AM</p>
-                    <div className="mt-4 flex items-center gap-2 text-sacral-blue font-bold text-[10px] uppercase tracking-[0.2em]">
-                      <Info className="w-3 h-3 text-gold-primary" />
-                      Easter Special Refreshments After Qurbana
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="text-gold-dark font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-2">Location</h4>
+                      <p className="text-2xl md:text-3xl font-playfair font-bold text-sacral-blue leading-tight mb-2 italic">Ukrainian St. Nicholas Catholic Church</p>
+                    </div>
+                    <address className="not-italic text-deep-slate/60 text-base md:text-lg leading-relaxed font-inter">
+                      1110 Caledonia Ave,<br />
+                      Victoria, BC V8T 1G1
+                    </address>
+                    <div className="pt-4">
+                      <a 
+                        href="https://www.google.com/maps?q=Ukrainian+Catholic+Church+of+St+Nicholas,+1110+Caledonia+Ave,+Victoria,+BC+V8T+1G1&ftid=0x548f747d62c47fbd:0xd7784bcf1010ca58&entry=gps&shh=CAE&lucs=,94297699,94284493,94231188,94280568,47071704,94218641,94282134,94286869&g_ep=CAISEjI2LjE0LjAuODkxOTAzMTgwMBgAIIgnKkgsOTQyOTc2OTksOTQyODQ0OTMsOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsOTQyODY4NjlCAkNB&skid=af8d7abe-cf7e-4c7d-8867-2952cb1b858a&g_st=iw" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 text-xs md:text-sm font-bold text-gold-primary hover:text-sacral-blue transition-premium uppercase tracking-[0.2em] group/link"
+                      >
+                        <div className="w-8 h-8 rounded-full border border-gold-primary/30 flex items-center justify-center group-hover/link:bg-gold-primary group-hover/link:text-white transition-premium">
+                          <MapPin className="w-4 h-4" />
+                        </div>
+                        Open in Google Maps
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div className="p-8 rounded-3xl bg-white shadow-xl shadow-sacral-blue/5 border border-sacral-blue/5 group hover:border-gold-primary/20 transition-premium">
-                <div className="flex items-start gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gold-primary flex items-center justify-center text-white flex-shrink-0 group-hover:scale-110 transition-premium">
-                    <MapPin className="w-8 h-8" />
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold mb-2 uppercase tracking-widest text-xs text-gold-dark">Location</h4>
-                    <p className="font-bold text-sacral-blue text-lg mb-1">Ukrainian St. Nicholas Catholic Church</p>
-                    <address className="not-italic text-deep-slate/60 text-sm leading-relaxed mb-4">
-                      1110 Caledonia Ave,<br />
-                      Victoria, BC V8T 1G1
-                    </address>
-                    <a 
-                      href="https://www.google.com/maps?q=Ukrainian+Catholic+Church+of+St+Nicholas,+1110+Caledonia+Ave,+Victoria,+BC+V8T+1G1&ftid=0x548f747d62c47fbd:0xd7784bcf1010ca58&entry=gps&shh=CAE&lucs=,94297699,94284493,94231188,94280568,47071704,94218641,94282134,94286869&g_ep=CAISEjI2LjE0LjAuODkxOTAzMTgwMBgAIIgnKkgsOTQyOTc2OTksOTQyODQ0OTMsOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsOTQyODY4NjlCAkNB&skid=af8d7abe-cf7e-4c7d-8867-2952cb1b858a&g_st=iw" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-bold text-gold-primary hover:text-sacral-blue transition-premium uppercase tracking-widest"
-                    >
-                      <MapPin className="w-4 h-4" /> Open in Google Maps
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div className="p-10 rounded-[2.5rem] bg-sacral-blue text-white relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-8 text-gold-primary/20 group-hover:text-gold-primary/40 transition-premium">
@@ -666,13 +560,13 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-24">
             <div className="md:col-span-2">
               <div className="flex items-center space-x-4 mb-10">
-                <div className="relative flex-shrink-0 w-16 h-16 rounded-full overflow-hidden border border-gold-primary/30 shadow-2xl">
+                <div className="relative flex-shrink-0 w-16 h-16 rounded-full overflow-hidden border border-gold-primary/30 shadow-2xl group cursor-pointer">
                   <Image 
                     src={logoImg} 
                     alt="Footer Logo" 
                     fill
                     sizes="64px"
-                    className="object-cover"
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
                     placeholder="blur"
                   />
                 </div>
