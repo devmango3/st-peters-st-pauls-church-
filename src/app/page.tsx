@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { 
   Plus,
   MapPin, 
@@ -43,12 +43,24 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const { scrollY, scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  const blobY1 = useTransform(scrollY, [0, 1000], [0, 300]);
+  const blobY2 = useTransform(scrollY, [0, 1000], [0, -200]);
+  const heroOpacity = useTransform(scrollY, [0, 500], [1, 0]);
+  const heroScale = useTransform(scrollY, [0, 500], [1, 0.9]);
   
   const fadeIn = {
-    initial: { opacity: 0, y: 30 },
+    initial: { opacity: 0, y: 60 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
+    viewport: { once: true, margin: "-10% 0px" },
+    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as const }
   };
 
   const staggerContainer = {
@@ -62,7 +74,12 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center bg-warm-white text-sacral-blue selection:bg-gold-primary/30">
+    <main className="flex min-h-screen flex-col items-center bg-warm-white text-sacral-blue selection:bg-gold-primary/30 overflow-x-hidden">
+      {/* Premium Scroll Progress */}
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-gold-dark via-gold-primary to-gold-light z-[100] origin-left shadow-lg"
+        style={{ scaleX }}
+      />
       {/* Premium Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-premium ${isScrolled ? "glass-dark border-b border-white/5 shadow-2xl py-2" : "bg-transparent py-4"}`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -82,14 +99,14 @@ export default function Home() {
               <span className="font-playfair font-bold text-xs md:text-base tracking-tight leading-none text-white transition-premium">
                 ST. PETER & ST. PAUL
               </span>
-              <span className="text-[10px] md:text-[10px] uppercase tracking-widest text-gold-primary font-bold">
+              <span className="text-[8px] md:text-[10px] uppercase tracking-widest text-gold-primary font-bold hidden md:block">
                 Orthodox Syrian Church, Victoria
               </span>
             </div>
           </div>
           
           <div className="hidden lg:flex space-x-10 font-outfit text-xs font-bold uppercase tracking-[0.2em] text-white/80">
-            <a href="#faith" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Our Faith</a>
+            <a href="#faith" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Faith</a>
             <a href="#metropolitan" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Supreme Head</a>
             <a href="#tradition" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Tradition</a>
             <a href="#gallery" className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">Gallery</a>
@@ -116,7 +133,7 @@ export default function Home() {
             >
               <div className="flex flex-col p-8 space-y-6 font-outfit text-xs font-bold uppercase tracking-[0.3em] text-sacral-blue">
                 {[
-                  { id: "faith", label: "Our Faith" },
+                  { id: "faith", label: "Faith" },
                   { id: "metropolitan", label: "Supreme Head" },
                   { id: "tradition", label: "Tradition" },
                   { id: "gallery", label: "Gallery" },
@@ -145,6 +162,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-br from-sacral-blue via-[#0d1b2a] to-sacral-blue" />
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(197,165,114,0.1),transparent_70%)]" />
           <motion.div 
+            style={{ y: blobY1 }}
             animate={{ 
               scale: [1, 1.1, 1],
               opacity: [0.3, 0.5, 0.3] 
@@ -153,6 +171,7 @@ export default function Home() {
             className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gold-primary/10 rounded-full blur-[120px]" 
           />
           <motion.div 
+            style={{ y: blobY2 }}
             animate={{ 
               scale: [1.2, 1, 1.2],
               opacity: [0.2, 0.4, 0.2] 
@@ -162,12 +181,15 @@ export default function Home() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-warm-white/10" />
-        <div className="relative z-10 text-center px-6 max-w-5xl">
+        <motion.div 
+          style={{ opacity: heroOpacity, scale: heroScale }}
+          className="relative z-10 text-center px-6 max-w-5xl pt-24 md:pt-0"
+        >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="inline-block mb-6 px-4 py-1.5 rounded-full glass-dark border border-white/10 text-gold-light text-[10px] uppercase font-bold tracking-[0.3em]"
+            className="inline-block mb-6 px-4 py-1.5 rounded-full glass-dark border border-white/10 text-gold-light text-[8px] md:text-[10px] uppercase font-bold tracking-[0.15em] md:tracking-[0.3em] max-w-[90vw] md:max-w-none"
           >
             A Congregation of the Malankara Orthodox Syrian Church
           </motion.div>
@@ -175,7 +197,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-5xl md:text-8xl font-playfair font-bold text-white mb-8 leading-[1.1]"
+            className="text-4xl md:text-8xl font-playfair font-bold text-white mb-8 leading-[1.1]"
           >
             Faith Rooted in <br />
             <span className="text-gold-primary italic">Apostolic Tradition</span>
@@ -184,7 +206,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 1 }}
-            className="text-lg md:text-xl text-white/90 font-inter mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-sm md:text-xl text-white/90 font-inter mb-12 max-w-2xl mx-auto leading-relaxed px-4"
           >
             Welcome to the St. Peter and St. Paul Orthodox Syrian Congregation in Victoria, BC. 
             A community preserving the timeless faith established by St. Thomas.
@@ -202,7 +224,7 @@ export default function Home() {
               Our Tradition
             </a>
           </motion.div>
-        </div>
+          </motion.div>
       </section>
 
       {/* Our Faith Section */}
@@ -352,8 +374,8 @@ export default function Home() {
       {/* Faith Section */}
       <section id="faith" className="w-full py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div {...fadeIn} className="relative h-[400px] lg:h-[500px] rounded-[3rem] overflow-hidden shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+            <motion.div {...fadeIn} className="lg:sticky lg:top-32 relative h-[400px] lg:h-[850px] rounded-[3rem] overflow-hidden shadow-2xl">
               <Image 
                 src={faithImg} 
                 alt="Our Faith" 
@@ -366,32 +388,60 @@ export default function Home() {
 
             <motion.div {...fadeIn} className="space-y-8">
               <div className="space-y-4">
-                <h4 className="text-gold-primary text-[10px] uppercase font-bold tracking-[0.4em]">Our Core Values</h4>
-                <h3 className="text-3xl md:text-5xl font-playfair font-bold text-sacral-blue leading-tight mb-8">Our <span className="text-gold-primary italic">Faith</span></h3>
+                <h4 className="text-gold-primary text-[10px] uppercase font-bold tracking-[0.4em]">Faith and Doctrines</h4>
+                <h3 className="text-3xl md:text-5xl font-playfair font-bold text-sacral-blue leading-tight">Malankara Orthodox <br /><span className="text-gold-primary italic">Syrian Church</span></h3>
+                <div className="h-1 w-20 bg-gold-primary/30 mt-4 rounded-full" />
               </div>
 
               <div className="space-y-6 text-deep-slate/70 text-base leading-relaxed font-inter">
-                <p className="text-lg font-bold text-sacral-blue/90">
-                  Remain as a benevolent community of St. Thomas, one of the twelve apostles of Jesus Christ who came to India in AD 52.
+                <p className="text-xl font-playfair italic text-sacral-blue font-bold">Faith</p>
+                <p>
+                  The Indian Orthodox Church, which is a member of the family of Oriental Orthodox Churches, is characterized by its continuity with the Apostolic Church, and follows the faith and practices defined by the first three Ecumenical Councils.
                 </p>
                 <p>
-                  This is a community of Malankara Orthodox Christians. The Malankara Orthodox Church traces its roots to the arrival of St. Thomas in India and his evangelical mission.
+                  The word &quot;Orthodox&quot; signifies both &quot;right believing&quot; and &quot;right worshipping&quot;, and so the Orthodox Church recognizes itself as the bearer of an uninterrupted living tradition of true faith lived out in worship.
+                </p>
+                <p>
+                  For the Orthodox Christians, the doctrine of the Holy Trinity underlies all theology and spirituality. Salvation is personal and underlines particularity. Yet, salvation is also communal and implies sharing; there is a uniqueness and wholeness in the human person, in humanity and in creation. The mystery of the Trinity is revealed in the supreme act of love, the Incarnation of the divine &quot;Word that became flesh&quot;, assuming and healing humanity and creation entirely.
+                </p>
+                <p>
+                  Participation in the deified humanity of Jesus Christ is the ultimate goal of the Christian life, accomplished through the Holy Spirit. In the Sacraments and in the life of the Church, each person is called to theosis or deification. For &lsquo;God became human in order that humanity might be divinized&rsquo;. When expressing these beliefs, the Orthodox looks for consistency with Scripture and Tradition, as manifested in the life of the Church and the early Church Fathers.
+                </p>
+                <p>
+                  The Orthodox Church experiences and expresses its theology in its Liturgy, which has in fact often accounted for the survival of the Church in times of turmoil. The Church is most authentically itself when it prays as a worshipping community. Hymns and music, incense and candles, gestures and prostrations, symbols and architecture, bread and wine and oil - all convey the content of the Christian faith in a variety of ways, appealing to each person in a tangible manner. The chief characteristic of the Orthodox liturgical cycle is its emphasis on celebration and joy. There is a desire to capture the heavenly beauty and to reveal this in the services, which are generally much longer in duration than those to which Western Christians are accustomed.
                 </p>
                 
-                <div className="space-y-6">
-                
-                  <p>
-                    Our church is a member parish of the South-West American Diocese. The Supreme Head is the Catholicos of the East and Malankara Metropolitan with headquarters at Devalokam, Kerala. Our Diocese Metropolitan is H.G. Thomas Mar Ivanios.
-                  </p>
+                <div className="pt-12 mt-12 border-t border-sacral-blue/10 space-y-8">
+                  <div className="space-y-4">
+                    <h4 className="text-2xl md:text-4xl font-playfair font-bold text-sacral-blue leading-tight mb-2">Doctrines And Practices</h4>
+                  </div>
+                  <div className="space-y-6">
+                    <p>
+                      The Indian Orthodox Church recognizes the decisions of the first three Holy Ecumenical Councils that met between AD 325 and AD 431 at Nicea, Constantinople and Ephesus as authoritative. It was these Councils that defined the basic doctrines on Trinity and Incarnation.
+                    </p>
+                    <p>
+                      The Orthodox Christian belongs to the Body of Christ, that is, the Church of Christ, which through Apostolic Succession is organically the same congregation which was born at the outpouring of the Holy Spirit in Jerusalem on Pentecost. The Orthodox Christian has been baptized in the name of the Holy Trinity and follows the ideals and beliefs of Sacred Tradition, of which the Holy Scriptures form a part.
+                    </p>
+                    <p>
+                      Orthodoxy believes in a living and loving God whose Grace protects and guides the faithful through the path of redemption. It acknowledges that God has revealed Himself through the Prophets and the life of the Church, but most importantly in the Person of Jesus Christ, His only-begotten Son who is man&apos;s Savior, as is recorded in the Holy Bible. The Incarnation of Christ as God-Man, His Crucifixion, Resurrection and Ascension form the foundational ground for the revelation of God.
+                    </p>
+                    <p>
+                      The Orthodox Church accepts all early traditions of Christianity from which its Liturgy and Sacraments have developed over the years.
+                    </p>
+                  </div>
                   
-                  <div className="pt-8 space-y-4">
-                    <h5 className="text-sacral-blue font-bold uppercase tracking-widest text-xs">An Invitation to You</h5>
-                    <p>
-                      We invite everyone to come and worship with us, be part of God&apos;s will and become the purpose of life. We gathered together to worship God in the ways he has revealed in the Bible.
-                    </p>
-                    <p>
-                      We care, share and work towards mutual support and supporting the community at large. Welcome and be part of us.
-                    </p>
+                  <div className="pt-8">
+                    <a 
+                      href="https://mosc.in/the_church/" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-3 text-gold-primary hover:text-sacral-blue font-bold tracking-[0.2em] uppercase text-xs transition-premium group"
+                    >
+                      Click here for more information
+                      <div className="w-8 h-8 rounded-full border border-gold-primary/30 flex items-center justify-center group-hover:bg-gold-primary group-hover:text-white transition-premium">
+                        <ChevronRight className="w-4 h-4" />
+                      </div>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -588,7 +638,7 @@ export default function Home() {
               <h5 className="text-gold-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-10">Quick Links</h5>
               <ul className="space-y-5 text-white/50 text-sm font-bold uppercase tracking-widest">
                 <li><a href="#" className="hover:text-gold-primary transition-premium">Home</a></li>
-                <li><a href="#about" className="hover:text-gold-primary transition-premium">Our Faith</a></li>
+                <li><a href="#faith" className="hover:text-gold-primary transition-premium">Faith</a></li>
                 <li><a href="#tradition" className="hover:text-gold-primary transition-premium">Tradition</a></li>
                 <li><a href="#worship" className="hover:text-gold-primary transition-premium">Worship</a></li>
               </ul>
