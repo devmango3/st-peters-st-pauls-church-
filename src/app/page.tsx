@@ -616,7 +616,7 @@ export default function Home() {
             <motion.div {...fadeIn}>
               <SectionLabel>Ecclesiastical Oversight</SectionLabel>
               <h3 className="text-3xl md:text-6xl font-playfair font-bold mb-10 leading-tight">
-                Our Parish <br />
+                Our Congregation <br />
                 <span className="text-gold-primary italic">St. Peter & St. Paul</span>
               </h3>
               
