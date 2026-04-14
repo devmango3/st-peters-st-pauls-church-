@@ -244,13 +244,13 @@ export default function Home() {
                   St. Peter and St. Paul&apos;s Syrian Orthodox Congregation in Victoria, British Columbia is a parish of the Malankara Orthodox Syrian Church under the Diocese of Canada.
                 </p>
                 <p>
-                  The congregation was founded on February 4, 2023. At that time, it fell under the Southwest American Diocese, and permission to establish the congregation was granted by His Grace Thomas Mar Ivanios, the then Bishop of the Diocese of Southwest America. The venerable Fr. Zera Paul served as the first vicar.
+                  The congregation was founded on February 4, 2023. At that time, it fell under the Southwest American Diocese, and permission to establish the congregation was granted by His Grace Thomas Mar Ivanios, the then Bishop of the Diocese of Southwest America. The venerable Rev. Fr. Zera Paul served as the first vicar.
                 </p>
                 <p>
-                  With the formation of the Diocese of Canada, the congregation came under the pastoral care of His Eminence Zacharias Mar Nicholovos, Metropolitan of the Northeast American Diocese, who oversees the Canadian Diocese.
+                  When the Canada Diocese was established, its assistant metropolitan was appointed. Consequently, the congregation came under the pastoral care of H.G. Zacharias Mar Nicholovos, Metropolitan of the Northeast American Diocese, who is the assistant metropolitan of the Canada Diocese.
                 </p>
                 <p>
-                  The current vicar is <span className="text-sacral-blue font-bold">M.C. Kuriakose Ramban, Mekkattil</span>.
+                  The current vicar is <span className="text-sacral-blue font-bold">Rev. Mekkattil M.C. Kuriakose Ramban</span>.
                 </p>
                 
                 <div className="pt-8 border-t border-sacral-blue/10">
@@ -315,7 +315,7 @@ export default function Home() {
               </div>
               <div className="p-8 flex flex-col flex-grow">
                 <div className={`space-y-4 text-deep-slate/70 text-sm leading-relaxed font-inter transition-all duration-700 overflow-hidden ${showFullMetropolitanBio ? "max-h-[1000px]" : "max-h-[120px]"}`}>
-                  <p className="font-extrabold text-sacral-blue/90">Present Catholicos of the East and Malankara Metropolitan.</p>
+                  <p className="font-extrabold text-sacral-blue/90">Catholicos of the East and Malankara Metropolitan.</p>
 
                 </div>
                 
@@ -340,7 +340,7 @@ export default function Home() {
               </div>
               <div className="p-8 flex flex-col flex-grow">
                 <div className={`space-y-4 text-deep-slate/70 text-sm leading-relaxed font-inter transition-all duration-700 overflow-hidden ${showFullNicholovosBio ? "max-h-[3000px]" : "max-h-[120px]"}`}>
-                  <p className="font-extrabold text-sacral-blue/90">Ruling Metropolitan of the Northeast American Diocese.</p>
+                  <p className="font-extrabold text-sacral-blue/90">Metropolitan of the Northeast American Diocese.</p>
                  
                 
                 </div>
@@ -353,7 +353,7 @@ export default function Home() {
               <div className="relative h-[400px] overflow-hidden bg-sacral-blue/5">
                 <Image 
                   src={vicarImg} 
-                  alt="Mekkattil M.C Kuriakose Rambachen" 
+                  alt="Rev. Mekkattil M.C. Kuriakose Ramban" 
                   fill 
                   sizes="(max-width: 768px) 100vw, 33vw"
                   className="object-contain transition-transform duration-1000 group-hover:scale-110" 
@@ -361,7 +361,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-sacral-blue/90 via-transparent to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6">
                   <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold mb-2">The Vicar</p>
-                  <h4 className="text-xl font-playfair font-bold text-white leading-tight">Mekkattil M.C Kuriakose Rambachen</h4>
+                  <h4 className="text-xl font-playfair font-bold text-white leading-tight">Rev. Mekkattil M.C. Kuriakose Ramban</h4>
                 </div>
               </div>
               <div className="p-8 flex flex-col flex-grow">
@@ -569,7 +569,7 @@ export default function Home() {
               <div className="space-y-8 relative z-10">
                 <div className="group/item">
                   <p className="text-gold-light/50 text-[10px] uppercase font-bold tracking-widest mb-2">The Vicar</p>
-                  <h5 className="text-2xl font-playfair font-bold group-hover/item:text-gold-primary transition-colors">Mekkattil M.C Kuriakose Rambachen</h5>
+                  <h5 className="text-2xl font-playfair font-bold group-hover/item:text-gold-primary transition-colors">Rev. Mekkattil M.C. Kuriakose Ramban</h5>
                   <a href="tel:7782370597" className="text-lg font-outfit text-white/80 hover:text-white transition-colors flex items-center gap-2 mt-1">
                     <Phone className="w-4 h-4 text-gold-primary" /> 778-237-0597
                   </a>
