@@ -67,10 +67,10 @@ const FloralBorder = () => (
    Section Label Component
 ───────────────────────────────────────────── */
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex items-center justify-center gap-3 mb-4">
-    <div className="h-px w-12 bg-gold-primary/50" />
-    <span className="text-gold-primary font-bold uppercase tracking-[0.45em] text-[9px] md:text-[11px]">{children}</span>
-    <div className="h-px w-12 bg-gold-primary/50" />
+  <div className="flex items-center justify-center gap-2 md:gap-3 mb-4 px-4 text-center">
+    <div className="h-px w-8 md:w-12 bg-gold-primary/50" />
+    <span className="text-gold-primary font-bold uppercase tracking-[0.2em] md:tracking-[0.45em] text-[9px] md:text-[11px]">{children}</span>
+    <div className="h-px w-8 md:w-12 bg-gold-primary/50" />
   </div>
 );
 
@@ -242,11 +242,11 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="inline-flex items-center gap-3 mb-8 px-5 py-2 rounded-full glass-dark border border-white/10 text-gold-light text-[8px] md:text-[10px] uppercase font-bold tracking-[0.15em] md:tracking-[0.3em] max-w-[90vw] md:max-w-none"
+            className="inline-flex items-center justify-center gap-2 md:gap-3 mb-8 px-4 md:px-5 py-2 rounded-full glass-dark border border-white/10 text-gold-light text-[7px] md:text-[10px] uppercase font-bold tracking-[0.1em] md:tracking-[0.3em] max-w-[95vw] md:max-w-none text-center"
           >
-            <CrossIcon className="w-3 h-3 text-gold-primary flex-shrink-0" />
-            A Congregation of the Malankara Orthodox Syrian Church
-            <CrossIcon className="w-3 h-3 text-gold-primary flex-shrink-0" />
+            <CrossIcon className="w-2.5 h-2.5 md:w-3 h-3 text-gold-primary flex-shrink-0" />
+            <span className="flex-1">A Congregation of the Malankara Orthodox Syrian Church</span>
+            <CrossIcon className="w-2.5 h-2.5 md:w-3 h-3 text-gold-primary flex-shrink-0" />
           </motion.div>
 
           <motion.h1 
@@ -264,15 +264,15 @@ export default function Home() {
             initial={{ scaleX: 0, opacity: 0 }}
             animate={{ scaleX: 1, opacity: 1 }}
             transition={{ delay: 0.7, duration: 1.2 }}
-            className="flex items-center justify-center gap-3 mb-8"
+            className="flex items-center justify-center gap-2 md:gap-3 mb-8"
           >
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-gold-primary/70" />
-            <CrossIcon className="w-4 h-4 text-gold-primary/80" />
-            <div className="h-px w-32 bg-gold-primary/50" />
-            <div className="w-2 h-2 rounded-full bg-gold-primary/60" />
-            <div className="h-px w-32 bg-gold-primary/50" />
-            <CrossIcon className="w-4 h-4 text-gold-primary/80" />
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-gold-primary/70" />
+            <div className="h-px w-8 md:w-16 bg-gradient-to-r from-transparent to-gold-primary/70" />
+            <CrossIcon className="w-3 h-3 md:w-4 h-4 text-gold-primary/80" />
+            <div className="h-px w-12 md:w-32 bg-gold-primary/50" />
+            <div className="w-1.5 h-1.5 md:w-2 h-2 rounded-full bg-gold-primary/60" />
+            <div className="h-px w-12 md:w-32 bg-gold-primary/50" />
+            <CrossIcon className="w-3 h-3 md:w-4 h-4 text-gold-primary/80" />
+            <div className="h-px w-8 md:w-16 bg-gradient-to-l from-transparent to-gold-primary/70" />
           </motion.div>
 
           <motion.p 
@@ -308,7 +308,6 @@ export default function Home() {
           transition={{ delay: 2 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
         >
-          <span className="text-white/30 text-[9px] uppercase tracking-[0.4em] font-bold">Scroll</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
