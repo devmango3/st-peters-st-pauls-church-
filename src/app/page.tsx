@@ -29,6 +29,7 @@ import metropolitanImg from "../../public/metropolitan.webp";
 import nicholovosImg from "../../public/Grace Zachariah Mar Nicholovos.jpg";
 import vicarImg from "../../public/vicar.jpeg";
 import faithImg from "../../public/faith.webp";
+import patronImg from "../../public/st.petrs and paul.jpeg";
 
 /* ─────────────────────────────────────────────
    Decorative SVG Components
@@ -199,7 +200,7 @@ export default function Home() {
       </nav>
 
       {/* ── Hero Section ── */}
-      <section className="relative w-full h-[90vh] flex items-center justify-center overflow-hidden bg-sacral-blue">
+      <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-sacral-blue">
         {/* Background layers */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-sacral-blue via-[#0d1b2a] to-sacral-blue" />
@@ -236,70 +237,107 @@ export default function Home() {
 
         <motion.div 
           style={{ opacity: heroOpacity, scale: heroScale }}
-          className="relative z-10 text-center px-6 max-w-5xl pt-24 md:pt-0"
+          className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-24 md:pt-0"
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-            className="inline-flex items-center justify-center gap-2 md:gap-3 mb-8 px-4 md:px-5 py-2 rounded-full glass-dark border border-white/10 text-gold-light text-[7px] md:text-[10px] uppercase font-bold tracking-[0.1em] md:tracking-[0.3em] max-w-[95vw] md:max-w-none text-center"
-          >
-            <CrossIcon className="w-2.5 h-2.5 md:w-3 h-3 text-gold-primary flex-shrink-0" />
-            <span className="flex-1">A Congregation of the Malankara Orthodox Syrian Church</span>
-            <CrossIcon className="w-2.5 h-2.5 md:w-3 h-3 text-gold-primary flex-shrink-0" />
-          </motion.div>
+          {/* Left Column: Text Content */}
+          <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="inline-flex items-center justify-center gap-2 md:gap-3 mb-8 px-4 md:px-5 py-2 rounded-full glass-dark border border-white/10 text-gold-light text-[7px] md:text-[10px] uppercase font-bold tracking-[0.1em] md:tracking-[0.3em] max-w-[95vw] md:max-w-none"
+            >
+              <CrossIcon className="w-2.5 h-2.5 md:w-3 h-3 text-gold-primary flex-shrink-0" />
+              <span className="flex-1">A Congregation of the Malankara Orthodox Syrian Church</span>
+              <CrossIcon className="w-2.5 h-2.5 md:w-3 h-3 text-gold-primary flex-shrink-0" />
+            </motion.div>
 
-          <motion.h1 
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-4xl md:text-8xl font-playfair font-bold text-white mb-8 leading-[1.1]"
-          >
-            Faith Rooted in <br />
-            <span className="text-gold-primary italic">Apostolic Tradition</span>
-          </motion.h1>
+            <motion.h1 
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="text-4xl md:text-7xl font-playfair font-bold text-white mb-6 leading-[1.1]"
+            >
+              Faith Rooted in <br />
+              <span className="text-gold-primary italic">Apostolic Tradition</span>
+            </motion.h1>
 
-          {/* Animated ornament under headline */}
-          <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={{ scaleX: 1, opacity: 1 }}
-            transition={{ delay: 0.7, duration: 1.2 }}
-            className="flex items-center justify-center gap-2 md:gap-3 mb-8"
-          >
-            <div className="h-px w-8 md:w-16 bg-gradient-to-r from-transparent to-gold-primary/70" />
-            <CrossIcon className="w-3 h-3 md:w-4 h-4 text-gold-primary/80" />
-            <div className="h-px w-12 md:w-32 bg-gold-primary/50" />
-            <div className="w-1.5 h-1.5 md:w-2 h-2 rounded-full bg-gold-primary/60" />
-            <div className="h-px w-12 md:w-32 bg-gold-primary/50" />
-            <CrossIcon className="w-3 h-3 md:w-4 h-4 text-gold-primary/80" />
-            <div className="h-px w-8 md:w-16 bg-gradient-to-l from-transparent to-gold-primary/70" />
-          </motion.div>
+            {/* Animated ornament under headline */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={{ scaleX: 1, opacity: 1 }}
+              transition={{ delay: 0.7, duration: 1.2 }}
+              className="flex items-center justify-center lg:justify-start gap-2 md:gap-3 mb-8 w-full"
+            >
+              <div className="h-px w-8 md:w-16 bg-gradient-to-r from-transparent to-gold-primary/70" />
+              <CrossIcon className="w-3 h-3 md:w-4 h-4 text-gold-primary/80" />
+              <div className="h-px w-12 md:w-20 bg-gold-primary/50" />
+              <div className="w-1.5 h-1.5 md:w-2 h-2 rounded-full bg-gold-primary/60" />
+              <div className="h-px w-12 md:w-20 bg-gold-primary/50" />
+              <CrossIcon className="w-3 h-3 md:w-4 h-4 text-gold-primary/80" />
+              <div className="h-px w-8 md:w-16 bg-gradient-to-l from-transparent to-gold-primary/70 lg:hidden" />
+            </motion.div>
 
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 1 }}
-            className="text-sm md:text-xl text-white/90 font-inter mb-12 max-w-2xl mx-auto leading-relaxed px-4"
-          >
-            Welcome to the St. Peter and St. Paul Orthodox Syrian Congregation in Victoria, BC. 
-            A community preserving the timeless faith established by St. Thomas.
-          </motion.p>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 1 }}
+              className="text-sm md:text-lg text-white/90 font-inter mb-10 max-w-xl leading-relaxed"
+            >
+              Welcome to the St. Peter and St. Paul Orthodox Syrian Congregation in Victoria, BC. 
+              A community preserving the timeless faith established by St. Thomas.
+            </motion.p>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6"
-          >
-            <a href="#worship" className="w-full sm:w-auto bg-gold-primary text-white hover:bg-white hover:text-gold-primary px-10 py-4 rounded-full font-bold transition-premium shadow-2xl shadow-gold-primary/30 flex items-center justify-center gap-2 group">
-              Plan Your Visit 
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a href="#tradition" className="w-full sm:w-auto glass-dark text-white hover:bg-white/10 px-10 py-4 rounded-full font-bold transition-premium border border-white/10">
-              Our Tradition
-            </a>
-          </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-6 w-full lg:w-auto"
+            >
+              <a href="#worship" className="w-full sm:w-auto bg-gold-primary text-white hover:bg-white hover:text-gold-primary px-8 py-3.5 rounded-full font-bold transition-premium shadow-2xl shadow-gold-primary/30 flex items-center justify-center gap-2 group">
+                Plan Your Visit 
+                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a href="#tradition" className="w-full sm:w-auto glass-dark text-white hover:bg-white/10 px-8 py-3.5 rounded-full font-bold transition-premium border border-white/10">
+                Our Tradition
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right Column: Patron Saints Image */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <motion.div
+              initial={{ opacity: 0, x: 50, scale: 0.9 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className="relative w-72 h-72 md:w-[550px] md:h-[550px] group"
+            >
+              {/* Animated glow behind the image */}
+              <div className="absolute inset-0 bg-gold-primary/20 rounded-full blur-[80px] group-hover:bg-gold-primary/30 transition-premium" />
+              
+              {/* Decorative rotating ring */}
+              <div className="absolute -inset-6 border border-gold-primary/20 rounded-full animate-[spin_40s_linear_infinite] opacity-50 pointer-events-none" 
+                   style={{ borderStyle: 'dashed' }} />
+              
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-gold-primary/30 shadow-3xl z-10 transition-premium group-hover:scale-105">
+                <Image 
+                  src={patronImg} 
+                  alt="St. Peter and St. Paul" 
+                  fill 
+                  priority
+                  className="object-cover"
+                  placeholder="blur"
+                />
+              </div>
+              
+              {/* Decorative cross ornament */}
+              <div className="absolute top-0 right-0 z-20 bg-gold-primary border-4 border-sacral-blue p-3 rounded-full shadow-2xl rotate-12">
+                <CrossIcon className="w-6 h-6 text-white" />
+              </div>
+            </motion.div>
+          </div>
         </motion.div>
+
 
         {/* Scroll indicator */}
         <motion.div
