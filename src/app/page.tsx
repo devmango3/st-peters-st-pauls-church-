@@ -237,7 +237,7 @@ export default function Home() {
 
         <motion.div 
           style={{ opacity: heroOpacity, scale: heroScale }}
-          className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center pt-24 md:pt-0"
+          className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center pt-32 md:pt-0 pb-12 md:pb-0"
         >
           {/* Left Column: Text Content */}
           <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -256,7 +256,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="text-4xl md:text-7xl font-playfair font-bold text-white mb-6 leading-[1.1]"
+              className="text-3xl md:text-7xl font-playfair font-bold text-white mb-4 md:mb-6 leading-[1.1]"
             >
               Faith Rooted in <br />
               <span className="text-gold-primary italic">Apostolic Tradition</span>
@@ -267,7 +267,7 @@ export default function Home() {
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
               transition={{ delay: 0.7, duration: 1.2 }}
-              className="flex items-center justify-center lg:justify-start gap-2 md:gap-3 mb-8 w-full"
+              className="flex items-center justify-center lg:justify-start gap-2 md:gap-3 mb-6 md:mb-8 w-full"
             >
               <div className="h-px w-8 md:w-16 bg-gradient-to-r from-transparent to-gold-primary/70" />
               <CrossIcon className="w-3 h-3 md:w-4 h-4 text-gold-primary/80" />
@@ -282,7 +282,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 1 }}
-              className="text-sm md:text-lg text-white/90 font-inter mb-10 max-w-xl leading-relaxed"
+              className="text-sm md:text-lg text-white/90 font-inter mb-6 md:mb-10 max-w-xl leading-relaxed"
             >
               Welcome to the St. Peter and St. Paul Orthodox Syrian Congregation in Victoria, BC. 
               A community preserving the timeless faith established by St. Thomas.
@@ -304,13 +304,13 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Right Column: Patron Saints Image */}
           <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
             <motion.div
-              initial={{ opacity: 0, x: 50, scale: 0.9 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
-              className="relative w-72 h-72 md:w-[550px] md:h-[550px] group"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="relative w-60 h-60 md:w-[500px] md:h-[500px] lg:w-[550px] lg:h-[550px] group"
             >
               {/* Animated glow behind the image */}
               <div className="absolute inset-0 bg-gold-primary/20 rounded-full blur-[80px] group-hover:bg-gold-primary/30 transition-premium" />
