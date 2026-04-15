@@ -786,7 +786,7 @@ export default function Home() {
                 </div>
 
                 <div className="pt-6 border-t border-white/10">
-                  <p className="text-gold-light/50 text-[10px] uppercase font-bold tracking-widest mb-2">Email ID</p>
+                  <p className="text-gold-light/50 text-[10px] uppercase font-bold tracking-widest mb-2">Email ID (Interact)</p>
                   <a href={`mailto:${churchContent.contact.email}`} className="text-sm font-bold hover:text-gold-primary transition-colors flex items-center gap-2 break-all">
                     <Mail className="w-4 h-4 text-gold-primary" /> {churchContent.contact.email}
                   </a>
@@ -798,7 +798,7 @@ export default function Home() {
       </section>
 
       {/* ── Footer ── */}
-      <footer id="contact" className="w-full bg-sacral-blue text-white pt-32 pb-12 relative overflow-hidden">
+      {/* <footer id="contact" className="w-full bg-sacral-blue text-white pt-32 pb-12 relative overflow-hidden">
         {/* Footer background textures */}
         <div className="absolute inset-0 opacity-[0.03]"
           style={{backgroundImage:"repeating-linear-gradient(45deg, rgba(197,165,114,0.5) 0px, rgba(197,165,114,0.5) 1px, transparent 0, transparent 40px)"}}
@@ -895,7 +895,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </footer>
+      </footer> */}
     </main>
   );
 }
