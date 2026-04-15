@@ -22,12 +22,14 @@ import {
   Cross
 } from "lucide-react";
 
+import { churchContent } from "../data/content";
+
 // Static imports for better image optimization (blur placeholders, automatic sizing)
 import logoImg from "../../public/logo.jpeg";
 import altarImg from "../../public/altar-main.jpeg";
 import metropolitanImg from "../../public/metropolitan.webp";
 import nicholovosImg from "../../public/Grace Zachariah Mar Nicholovos.jpg";
-import vicarImg from "../../public/vicar.jpeg";
+import vicarImg from "../../public/vicar.jpg";
 import faithImg from "../../public/faith.webp";
 import patronImg from "../../public/st.petrs and paul.jpeg";
 
@@ -143,18 +145,18 @@ export default function Home() {
             </div>
             <div className="flex flex-col">
               <span className="font-playfair font-bold text-xs md:text-base tracking-tight leading-none text-white transition-premium">
-                ST. PETER & ST. PAUL
+                {churchContent.churchName.primary}
               </span>
               <span className="text-[8px] md:text-[10px] uppercase tracking-widest text-gold-primary font-bold hidden md:block">
-                Orthodox Syrian Church, Victoria
+                {churchContent.churchName.secondary}
               </span>
             </div>
           </div>
           
           <div className="hidden lg:flex space-x-10 font-outfit text-xs font-bold uppercase tracking-[0.2em] text-white/80">
-            {["faith","metropolitan","tradition","gallery","worship","contact"].map((id, i) => (
-              <a key={id} href={`#${id}`} className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">
-                {["Faith","Supreme Head","Tradition","Gallery","Worship","Connect"][i]}
+            {churchContent.navLinks.map((link) => (
+              <a key={link.id} href={`#${link.id}`} className="hover:text-gold-primary transition-premium border-b-2 border-transparent hover:border-gold-primary pb-1">
+                {link.label}
               </a>
             ))}
           </div>
@@ -176,14 +178,7 @@ export default function Home() {
               className="lg:hidden bg-white border-t border-sacral-blue/5 overflow-hidden shadow-2xl"
             >
               <div className="flex flex-col p-8 space-y-6 font-outfit text-xs font-bold uppercase tracking-[0.3em] text-sacral-blue">
-                {[
-                  { id: "faith", label: "Faith" },
-                  { id: "metropolitan", label: "Supreme Head" },
-                  { id: "tradition", label: "Tradition" },
-                  { id: "gallery", label: "Gallery" },
-                  { id: "worship", label: "Worship" },
-                  { id: "contact", label: "Connect" },
-                ].map((item) => (
+                {churchContent.navLinks.map((item) => (
                   <a 
                     key={item.id} 
                     href={`#${item.id}`} 
@@ -248,7 +243,7 @@ export default function Home() {
               className="inline-flex items-center justify-center gap-2 md:gap-3 mb-8 px-4 md:px-5 py-2 rounded-full glass-dark border border-white/10 text-gold-light text-[7px] md:text-[10px] uppercase font-bold tracking-[0.1em] md:tracking-[0.3em] max-w-[95vw] md:max-w-none"
             >
               <CrossIcon className="w-2.5 h-2.5 md:w-3 h-3 text-gold-primary flex-shrink-0" />
-              <span className="flex-1">A Congregation of the Malankara Orthodox Syrian Church</span>
+              <span className="flex-1">{churchContent.hero.label}</span>
               <CrossIcon className="w-2.5 h-2.5 md:w-3 h-3 text-gold-primary flex-shrink-0" />
             </motion.div>
 
@@ -258,8 +253,8 @@ export default function Home() {
               transition={{ duration: 1, delay: 0.2 }}
               className="text-3xl md:text-7xl font-playfair font-bold text-white mb-4 md:mb-6 leading-[1.1]"
             >
-              Faith Rooted in <br />
-              <span className="text-gold-primary italic">Apostolic Tradition</span>
+              {churchContent.hero.title} <br />
+              <span className="text-gold-primary italic">{churchContent.hero.subtitle}</span>
             </motion.h1>
 
             {/* Animated ornament under headline */}
@@ -284,8 +279,7 @@ export default function Home() {
               transition={{ delay: 0.6, duration: 1 }}
               className="text-sm md:text-lg text-white/90 font-inter mb-6 md:mb-10 max-w-xl leading-relaxed"
             >
-              Welcome to the St. Peter and St. Paul Orthodox Syrian Congregation in Victoria, BC. 
-              A community preserving the timeless faith established by St. Thomas.
+              {churchContent.hero.description}
             </motion.p>
 
             <motion.div 
@@ -364,8 +358,8 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div {...fadeIn} className="text-center mb-20 md:mb-24">
-            <SectionLabel>Established 2023</SectionLabel>
-            <h3 className="text-4xl md:text-7xl font-playfair font-bold text-sacral-blue mb-6">Our Congregation</h3>
+            <SectionLabel>{churchContent.ourCongregation.established}</SectionLabel>
+            <h3 className="text-4xl md:text-7xl font-playfair font-bold text-sacral-blue mb-6">{churchContent.ourCongregation.title}</h3>
             <FloralBorder />
           </motion.div>
 
@@ -376,21 +370,15 @@ export default function Home() {
                 <div className="relative">
                   <div className="absolute -left-2 top-0 bottom-0 w-1 bg-gradient-to-b from-gold-primary/80 via-gold-primary/40 to-transparent rounded-full" />
                   <p className="text-2xl font-playfair italic text-sacral-blue pl-8 py-2">
-                    St. Peter and St. Paul&apos;s Syrian Orthodox Congregation, Victoria, British Columbia
+                    {churchContent.ourCongregation.quote}
                   </p>
                 </div>
 
+                {churchContent.ourCongregation.history.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
                 <p>
-                  St. Peter and St. Paul&apos;s Syrian Orthodox Congregation in Victoria, British Columbia is a parish of the Malankara Orthodox Syrian Church under the Diocese of Canada.
-                </p>
-                <p>
-                  The congregation was founded on February 4, 2023. At that time, it fell under the Southwest American Diocese, and permission to establish the congregation was granted by His Grace Thomas Mar Ivanios, the then Bishop of the Diocese of Southwest America. The Rev. Fr. Zera Paul served as the first vicar.
-                </p>
-                <p>
-                  When the Canada Diocese was established, its assistant metropolitan was appointed. Consequently, the congregation came under the pastoral care of H.G. Zacharias Mar Nicholovos, Metropolitan of the Northeast American Diocese, who is the assistant metropolitan of the Canada Diocese.
-                </p>
-                <p>
-                  The current vicar is <span className="text-sacral-blue font-bold">Rev. Mekkattil M.C. Kuriakose Ramban</span>.
+                  The current vicar is <span className="text-sacral-blue font-bold">{churchContent.ourCongregation.vicarLabel}</span>.
                 </p>
                 
                 {/* Mission card */}
@@ -401,7 +389,7 @@ export default function Home() {
                   </div>
                   <OrnamentDivider />
                   <p className="italic text-lg text-sacral-blue/80 font-playfair leading-relaxed">
-                    &quot;The congregation was established to provide spiritual services to students arriving to study on Vancouver Island, and to serve the Orthodox faithful living in Victoria.&quot;
+                    &quot;{churchContent.ourCongregation.mission}&quot;
                   </p>
                 </div>
               </div>
@@ -474,14 +462,14 @@ export default function Home() {
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="h-px w-6 bg-gold-primary/60" />
-                    <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold">The Supreme Head</p>
+                    <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold">{churchContent.leadership[0].role}</p>
                   </div>
-                  <h4 className="text-xl font-playfair font-bold text-white leading-tight">H.H. Baselios Marthoma Mathews III</h4>
+                  <h4 className="text-xl font-playfair font-bold text-white leading-tight">{churchContent.leadership[0].name}</h4>
                 </div>
               </div>
               <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-white to-sacral-blue/3">
                 <div className={`space-y-4 text-deep-slate/70 text-sm leading-relaxed font-inter transition-all duration-700 overflow-hidden ${showFullMetropolitanBio ? "max-h-[1000px]" : "max-h-[120px]"}`}>
-                  <p className="font-extrabold text-sacral-blue/90">Catholicos of the East and Malankara Metropolitan.</p>
+                  <p className="font-extrabold text-sacral-blue/90">{churchContent.leadership[0].title}</p>
                 </div>
               </div>
             </motion.div>
@@ -501,14 +489,14 @@ export default function Home() {
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="h-px w-6 bg-gold-primary/60" />
-                    <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold">Assistant Metropolitan of Canada Diocese</p>
+                    <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold">{churchContent.leadership[1].role}</p>
                   </div>
-                  <h4 className="text-xl font-playfair font-bold text-white leading-tight">Metropolitan Zachariah Mar Nicholovos</h4>
+                  <h4 className="text-xl font-playfair font-bold text-white leading-tight">{churchContent.leadership[1].name}</h4>
                 </div>
               </div>
               <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-white to-sacral-blue/3">
                 <div className={`space-y-4 text-deep-slate/70 text-sm leading-relaxed font-inter transition-all duration-700 overflow-hidden ${showFullNicholovosBio ? "max-h-[3000px]" : "max-h-[120px]"}`}>
-                  <p className="font-extrabold text-sacral-blue/90">Metropolitan of the Northeast American Diocese.</p>
+                  <p className="font-extrabold text-sacral-blue/90">{churchContent.leadership[1].title}</p>
                 </div>
               </div>
             </motion.div>
@@ -528,9 +516,9 @@ export default function Home() {
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="flex items-center gap-2 mb-2">
                     <div className="h-px w-6 bg-gold-primary/60" />
-                    <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold">The Vicar</p>
+                    <p className="text-gold-primary text-[10px] uppercase tracking-[0.4em] font-bold">{churchContent.leadership[2].role}</p>
                   </div>
-                  <h4 className="text-xl font-playfair font-bold text-white leading-tight">Rev. Mekkattil M.C. Kuriakose Ramban</h4>
+                  <h4 className="text-xl font-playfair font-bold text-white leading-tight">{churchContent.leadership[2].name}</h4>
                 </div>
               </div>
               <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-white to-sacral-blue/3" />
@@ -571,7 +559,7 @@ export default function Home() {
 
             <motion.div {...fadeIn} className="space-y-8">
               <div className="space-y-4">
-                <SectionLabel>Faith and Doctrines</SectionLabel>
+                <SectionLabel>{churchContent.faith.subtitle}</SectionLabel>
                 <h3 className="text-3xl md:text-5xl font-playfair font-bold text-sacral-blue leading-tight">
                   Malankara Orthodox <br /><span className="text-gold-primary italic">Syrian Church</span>
                 </h3>
@@ -580,40 +568,19 @@ export default function Home() {
 
               <div className="space-y-6 text-deep-slate/70 text-base leading-relaxed font-inter">
                 <p className="text-xl font-playfair italic text-sacral-blue font-bold">Faith</p>
-                <p>
-                  The Indian Orthodox Church, which is a member of the family of Oriental Orthodox Churches, is characterized by its continuity with the Apostolic Church, and follows the faith and practices defined by the first three Ecumenical Councils.
-                </p>
-                <p>
-                  The word &quot;Orthodox&quot; signifies both &quot;right believing&quot; and &quot;right worshipping&quot;, and so the Orthodox Church recognizes itself as the bearer of an uninterrupted living tradition of true faith lived out in worship.
-                </p>
-                <p>
-                  For the Orthodox Christians, the doctrine of the Holy Trinity underlies all theology and spirituality. Salvation is personal and underlines particularity. Yet, salvation is also communal and implies sharing; there is a uniqueness and wholeness in the human person, in humanity and in creation. The mystery of the Trinity is revealed in the supreme act of love, the Incarnation of the divine &quot;Word that became flesh&quot;, assuming and healing humanity and creation entirely.
-                </p>
-                <p>
-                  Participation in the deified humanity of Jesus Christ is the ultimate goal of the Christian life, accomplished through the Holy Spirit. In the Sacraments and in the life of the Church, each person is called to theosis or deification. For &lsquo;God became human in order that humanity might be divinized&rsquo;. When expressing these beliefs, the Orthodox looks for consistency with Scripture and Tradition, as manifested in the life of the Church and the early Church Fathers.
-                </p>
-                <p>
-                  The Orthodox Church experiences and expresses its theology in its Liturgy, which has in fact often accounted for the survival of the Church in times of turmoil. The Church is most authentically itself when it prays as a worshipping community. Hymns and music, incense and candles, gestures and prostrations, symbols and architecture, bread and wine and oil - all convey the content of the Christian faith in a variety of ways, appealing to each person in a tangible manner. The chief characteristic of the Orthodox liturgical cycle is its emphasis on celebration and joy. There is a desire to capture the heavenly beauty and to reveal this in the services, which are generally much longer in duration than those to which Western Christians are accustomed.
-                </p>
+                {churchContent.faith.description.map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
                 
                 <div className="pt-12 mt-12 border-t border-sacral-blue/10 space-y-8">
                   <OrnamentDivider />
                   <div className="space-y-4">
-                    <h4 className="text-2xl md:text-4xl font-playfair font-bold text-sacral-blue leading-tight mb-2">Doctrines And Practices</h4>
+                    <h4 className="text-2xl md:text-4xl font-playfair font-bold text-sacral-blue leading-tight mb-2">{churchContent.faith.doctrines.title}</h4>
                   </div>
                   <div className="space-y-6">
-                    <p>
-                      The Indian Orthodox Church recognizes the decisions of the first three Holy Ecumenical Councils that met between AD 325 and AD 431 at Nicea, Constantinople and Ephesus as authoritative. It was these Councils that defined the basic doctrines on Trinity and Incarnation.
-                    </p>
-                    <p>
-                      The Orthodox Christian belongs to the Body of Christ, that is, the Church of Christ, which through Apostolic Succession is organically the same congregation which was born at the outpouring of the Holy Spirit in Jerusalem on Pentecost. The Orthodox Christian has been baptized in the name of the Holy Trinity and follows the ideals and beliefs of Sacred Tradition, of which the Holy Scriptures form a part.
-                    </p>
-                    <p>
-                      Orthodoxy believes in a living and loving God whose Grace protects and guides the faithful through the path of redemption. It acknowledges that God has revealed Himself through the Prophets and the life of the Church, but most importantly in the Person of Jesus Christ, His only-begotten Son who is man&apos;s Savior, as is recorded in the Holy Bible. The Incarnation of Christ as God-Man, His Crucifixion, Resurrection and Ascension form the foundational ground for the revelation of God.
-                    </p>
-                    <p>
-                      The Orthodox Church accepts all early traditions of Christianity from which its Liturgy and Sacraments have developed over the years.
-                    </p>
+                    {churchContent.faith.doctrines.content.map((para, i) => (
+                      <p key={i}>{para}</p>
+                    ))}
                   </div>
                   
                   <div className="pt-8">
@@ -667,7 +634,7 @@ export default function Home() {
 
               <div className="space-y-8 text-white/70 text-lg leading-relaxed font-inter">
                 <p>
-                  St. Peter and St. Paul Orthodox Syrian Congregation, Victoria is a growing faith community under the Canada Diocese of the Malankara Orthodox Syrian Church.
+                  {churchContent.tradition.description}
                 </p>
               </div>
             </motion.div>
@@ -680,8 +647,8 @@ export default function Home() {
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gold-primary/30 to-transparent" />
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 md:mb-20">
-            <SectionLabel>Our Parish Life</SectionLabel>
-            <h3 className="text-3xl md:text-6xl font-playfair font-bold mb-4">Community in Action</h3>
+            <SectionLabel>{churchContent.gallery.label}</SectionLabel>
+            <h3 className="text-3xl md:text-6xl font-playfair font-bold mb-4">{churchContent.gallery.title}</h3>
             <FloralBorder />
           </div>
           
@@ -756,15 +723,15 @@ export default function Home() {
                 <div className="space-y-4">
                   <div>
                     <h4 className="text-gold-dark font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-2">Location</h4>
-                    <p className="text-2xl md:text-3xl font-playfair font-bold text-sacral-blue leading-tight mb-2 italic">Ukrainian St. Nicholas Catholic Church</p>
+                    <p className="text-2xl md:text-3xl font-playfair font-bold text-sacral-blue leading-tight mb-2 italic">{churchContent.contact.location.churchName}</p>
                   </div>
                   <address className="not-italic text-deep-slate/60 text-base md:text-lg leading-relaxed font-inter">
-                    1110 Caledonia Ave,<br />
-                    Victoria, BC V8T 1G1
+                    {churchContent.contact.location.addressPrimary}<br />
+                    {churchContent.contact.location.addressSecondary}
                   </address>
                   <div className="pt-4">
                     <a 
-                      href="https://www.google.com/maps?q=Ukrainian+Catholic+Church+of+St+Nicholas,+1110+Caledonia+Ave,+Victoria,+BC+V8T+1G1&ftid=0x548f747d62c47fbd:0xd7784bcf1010ca58&entry=gps&shh=CAE&lucs=,94297699,94284493,94231188,94280568,47071704,94218641,94282134,94286869&g_ep=CAISEjI2LjE0LjAuODkxOTAzMTgwMBgAIIgnKkgsOTQyOTc2OTksOTQyODQ0OTMsOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsOTQyODY4NjlCAkNB&skid=af8d7abe-cf7e-4c7d-8867-2952cb1b858a&g_st=iw" 
+                      href={churchContent.contact.location.mapsUrl}
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-3 text-xs md:text-sm font-bold text-gold-primary hover:text-sacral-blue transition-premium uppercase tracking-[0.2em] group/link"
@@ -795,33 +762,33 @@ export default function Home() {
               <div className="space-y-8 relative z-10">
                 <div className="group/item">
                   <p className="text-gold-light/50 text-[10px] uppercase font-bold tracking-widest mb-2">The Vicar</p>
-                  <h5 className="text-2xl font-playfair font-bold group-hover/item:text-gold-primary transition-colors">Rev. Mekkattil M.C. Kuriakose Ramban</h5>
-                  <a href="tel:7782370597" className="text-lg font-outfit text-white/80 hover:text-white transition-colors flex items-center gap-2 mt-1">
-                    <Phone className="w-4 h-4 text-gold-primary" /> 778-237-0597
+                  <h5 className="text-2xl font-playfair font-bold group-hover/item:text-gold-primary transition-colors">{churchContent.contact.vicar.name}</h5>
+                  <a href={`tel:${churchContent.contact.vicar.phone.replace(/[^0-9+]/g, '')}`} className="text-lg font-outfit text-white/80 hover:text-white transition-colors flex items-center gap-2 mt-1">
+                    <Phone className="w-4 h-4 text-gold-primary" /> {churchContent.contact.vicar.phone}
                   </a>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-white/10">
                   <div>
                     <p className="text-gold-light/50 text-[10px] uppercase font-bold tracking-widest mb-1">Trustee</p>
-                    <p className="text-sm font-bold text-white mb-1">Varughese Koshy</p>
-                    <a href="tel:+12507101874" className="text-xs text-white/70 hover:text-gold-primary transition-colors flex items-center gap-2">
-                       +1 (250) 710-1874
+                    <p className="text-sm font-bold text-white mb-1">{churchContent.contact.trustee.name}</p>
+                    <a href={`tel:${churchContent.contact.trustee.phone.replace(/[^0-9+]/g, '')}`} className="text-xs text-white/70 hover:text-gold-primary transition-colors flex items-center gap-2">
+                       {churchContent.contact.trustee.phone}
                     </a>
                   </div>
                   <div>
                     <p className="text-gold-light/50 text-[10px] uppercase font-bold tracking-widest mb-1">Secretary</p>
-                    <p className="text-sm font-bold text-white mb-1">Ashish Philip Cheriyan</p>
-                    <a href="tel:+17785353885" className="text-xs text-white/70 hover:text-gold-primary transition-colors flex items-center gap-2">
-                       +1 (778) 535-3885
+                    <p className="text-sm font-bold text-white mb-1">{churchContent.contact.secretary.name}</p>
+                    <a href={`tel:${churchContent.contact.secretary.phone.replace(/[^0-9+]/g, '')}`} className="text-xs text-white/70 hover:text-gold-primary transition-colors flex items-center gap-2">
+                       {churchContent.contact.secretary.phone}
                     </a>
                   </div>
                 </div>
 
                 <div className="pt-6 border-t border-white/10">
                   <p className="text-gold-light/50 text-[10px] uppercase font-bold tracking-widest mb-2">Email ID</p>
-                  <a href="mailto:stpetersandstpaulsmosc@gmail.com" className="text-sm font-bold hover:text-gold-primary transition-colors flex items-center gap-2 break-all">
-                    <Mail className="w-4 h-4 text-gold-primary" /> stpetersandstpaulsmosc@gmail.com
+                  <a href={`mailto:${churchContent.contact.email}`} className="text-sm font-bold hover:text-gold-primary transition-colors flex items-center gap-2 break-all">
+                    <Mail className="w-4 h-4 text-gold-primary" /> {churchContent.contact.email}
                   </a>
                 </div>
               </div>
@@ -858,10 +825,10 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col">
                   <span className="font-playfair font-bold text-2xl tracking-tight leading-none uppercase">
-                    ST. PETER & ST. PAUL
+                    {churchContent.churchName.primary}
                   </span>
                   <span className="text-xs uppercase tracking-widest text-gold-primary font-bold mt-1">
-                    Orthodox Syrian Church, Victoria
+                    {churchContent.churchName.secondary}
                   </span>
                 </div>
               </div>
@@ -874,18 +841,18 @@ export default function Home() {
               </div>
 
               <p className="text-white/50 mb-10 text-lg max-w-md font-inter leading-relaxed">
-                Providing a sanctuary for spiritual growth, fellowship, and traditional Orthodox worship in British Columbia.
+                {churchContent.footer.description}
               </p>
             </div>
 
             <div>
               <h5 className="text-gold-primary text-[10px] font-bold uppercase tracking-[0.3em] mb-10">Quick Links</h5>
               <ul className="space-y-5 text-white/50 text-sm font-bold uppercase tracking-widest">
-                {[["#","Home"],["#faith","Faith"],["#tradition","Tradition"],["#worship","Worship"]].map(([href,label]) => (
-                  <li key={label}>
-                    <a href={href} className="hover:text-gold-primary transition-premium flex items-center gap-2 group">
+                {churchContent.navLinks.slice(0, 4).map((link) => (
+                  <li key={link.id}>
+                    <a href={`#${link.id}`} className="hover:text-gold-primary transition-premium flex items-center gap-2 group">
                       <div className="w-0 group-hover:w-4 h-px bg-gold-primary transition-all duration-300 overflow-hidden" />
-                      {label}
+                      {link.label}
                     </a>
                   </li>
                 ))}
@@ -897,13 +864,13 @@ export default function Home() {
               <div className="flex gap-4">
                 <MapPin className="text-gold-primary w-5 h-5 flex-shrink-0 mt-1" />
                 <address className="text-white/50 text-sm not-italic leading-relaxed font-inter">
-                  Ukrainian St. Nicholas Catholic Church<br />
-                  1110 Caledonia Ave,<br />
-                  Victoria, BC V8T 1G1
+                  {churchContent.contact.location.churchName}<br />
+                  {churchContent.contact.location.addressPrimary}<br />
+                  {churchContent.contact.location.addressSecondary}
                 </address>
               </div>
               <a 
-                href="https://www.google.com/maps?q=Ukrainian+Catholic+Church+of+St+Nicholas,+1110+Caledonia+Ave,+Victoria,+BC+V8T+1G1&ftid=0x548f747d62c47fbd:0xd7784bcf1010ca58&entry=gps&shh=CAE&lucs=,94297699,94284493,94231188,94280568,47071704,94218641,94282134,94286869&g_ep=CAISEjI2LjE0LjAuODkxOTAzMTgwMBgAIIgnKkgsOTQyOTc2OTksOTQyODQ0OTMsOTQyMzExODgsOTQyODA1NjgsNDcwNzE3MDQsOTQyMTg2NDEsOTQyODIxMzQsOTQyODY4NjlCAkNB&skid=af8d7abe-cf7e-4c7d-8867-2952cb1b858a&g_st=iw" 
+                href={churchContent.contact.location.mapsUrl}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 text-[10px] font-bold text-gold-primary hover:text-white transition-premium uppercase tracking-[0.2em] group"
