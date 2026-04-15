@@ -798,7 +798,7 @@ export default function Home() {
       </section>
 
       {/* ── Footer ── */}
-      {/* <footer id="contact" className="w-full bg-sacral-blue text-white pt-32 pb-12 relative overflow-hidden">
+      <footer id="contact" className="w-full bg-sacral-blue text-white pt-32 pb-12 relative overflow-hidden">
         {/* Footer background textures */}
         <div className="absolute inset-0 opacity-[0.03]"
           style={{backgroundImage:"repeating-linear-gradient(45deg, rgba(197,165,114,0.5) 0px, rgba(197,165,114,0.5) 1px, transparent 0, transparent 40px)"}}
@@ -895,7 +895,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </footer> */}
+      </footer>
     </main>
   );
 }
