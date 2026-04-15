@@ -21,9 +21,9 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "St. Peter & St. Paul Orthodox Syrian Church | Victoria, BC",
+  title: "St. Peter & St. Paul Orthodox Syrian Congregation | Victoria, BC",
   description: "Experience traditional Syrian Orthodox worship in Victoria, BC. St. Peter & St. Paul Malankara Orthodox Church offers Holy Qurbana, community life, and ancient Christian traditions under the South-West American Diocese.",
-  keywords: ["Syrian Orthodox", "Orthodox Church Victoria", "St. Peter & St. Paul Victoria", "Malankara Orthodox Syrian Church", "Victoria BC Christian Church", "Indian Orthodox Victoria", "Syrian Orthodox Christianity"],
+  keywords: ["Syrian Orthodox", "Orthodox Church Victoria", "St. Peter & St. Paul Victoria", "Malankara Orthodox Syrian Church", "Victoria BC Christian Church", "Indian Orthodox Victoria", "Syrian Orthodox Christianity","St. Peter & St. Paul Syrian Church victoria canada","St. Peter & St. Paul Orthodox Syrian Congregation Victoria"],
   icons: {
     icon: "/logo.jpeg",
     apple: "/logo.jpeg",
