@@ -4,27 +4,17 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { 
-  Plus,
-  MapPin, 
-  Clock, 
+  MapPin,  
   Phone, 
   Mail, 
   ChevronRight, 
-  Calendar, 
-  Users, 
-  Heart,
-  Anchor,
   ShieldCheck,
-  Info,
   Menu,
   X,
-  Star,
-  Cross
 } from "lucide-react";
 
 import { churchContent } from "../data/content";
 
-// Static imports for better image optimization (blur placeholders, automatic sizing)
 import logoImg from "../../public/logo.jpeg";
 import altarImg from "../../public/altar-main.jpeg";
 import metropolitanImg from "../../public/metropolitan.webp";
@@ -33,9 +23,6 @@ import vicarImg from "../../public/vicar.jpg";
 import faithImg from "../../public/faith.webp";
 import patronImg from "../../public/st.petrs and paul.jpeg";
 
-/* ─────────────────────────────────────────────
-   Decorative SVG Components
-───────────────────────────────────────────── */
 const CrossIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 40 40" fill="currentColor">
     <rect x="17" y="2" width="6" height="36" rx="2"/>
@@ -66,9 +53,7 @@ const FloralBorder = () => (
   </div>
 );
 
-/* ─────────────────────────────────────────────
-   Section Label Component
-───────────────────────────────────────────── */
+
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   <div className="flex items-center justify-center gap-2 md:gap-3 mb-4 px-4 text-center">
     <div className="h-px w-8 md:w-12 bg-gold-primary/50" />
@@ -122,13 +107,11 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center bg-warm-white text-sacral-blue selection:bg-gold-primary/30 overflow-x-hidden">
 
-      {/* Premium Scroll Progress */}
       <motion.div 
         className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-gold-dark via-gold-primary to-gold-light z-[100] origin-left shadow-lg"
         style={{ scaleX }}
       />
 
-      {/* ── Navigation ── */}
       <nav className={`fixed top-0 w-full z-50 transition-premium ${isScrolled ? "glass-dark border-b border-white/5 shadow-2xl py-2" : "bg-transparent py-4"}`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -194,23 +177,17 @@ export default function Home() {
         </AnimatePresence>
       </nav>
 
-      {/* ── Hero Section ── */}
       <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-sacral-blue">
-        {/* Background layers */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-sacral-blue via-[#0d1b2a] to-sacral-blue" />
-          {/* Radial light burst */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(197,165,114,0.18)_0%,transparent_65%)]" />
-          {/* Fine grain texture overlay */}
           <div className="absolute inset-0 opacity-[0.04]" style={{backgroundImage:"url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")"}} />
-          {/* Decorative corner ornaments */}
           <div className="absolute top-20 left-10 text-gold-primary/10">
             <CrossIcon className="w-24 h-24" />
           </div>
           <div className="absolute bottom-20 right-10 text-gold-primary/10 rotate-45">
             <CrossIcon className="w-16 h-16" />
           </div>
-          {/* Animated halos */}
           <motion.div 
             style={{ y: blobY1 }}
             animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
@@ -223,7 +200,6 @@ export default function Home() {
             transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
             className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-sacral-blue/40 rounded-full blur-[150px]" 
           />
-          {/* Concentric ring decorations */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-gold-primary/5 pointer-events-none" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-gold-primary/5 pointer-events-none" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-gold-primary/8 pointer-events-none" />
@@ -234,7 +210,6 @@ export default function Home() {
           style={{ opacity: heroOpacity, scale: heroScale }}
           className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center pt-32 md:pt-0 pb-12 md:pb-0"
         >
-          {/* Left Column: Text Content */}
           <div className="order-2 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -257,7 +232,6 @@ export default function Home() {
               <span className="text-gold-primary italic">{churchContent.hero.subtitle}</span>
             </motion.h1>
 
-            {/* Animated ornament under headline */}
             <motion.div
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
@@ -306,10 +280,8 @@ export default function Home() {
               viewport={{ once: true }}
               className="relative w-60 h-60 md:w-[500px] md:h-[500px] lg:w-[550px] lg:h-[550px] group"
             >
-              {/* Animated glow behind the image */}
               <div className="absolute inset-0 bg-gold-primary/20 rounded-full blur-[80px] group-hover:bg-gold-primary/30 transition-premium" />
               
-              {/* Decorative rotating ring */}
               <div className="absolute -inset-6 border border-gold-primary/20 rounded-full animate-[spin_40s_linear_infinite] opacity-50 pointer-events-none" 
                    style={{ borderStyle: 'dashed' }} />
               
@@ -324,7 +296,6 @@ export default function Home() {
                 />
               </div>
               
-              {/* Decorative cross ornament */}
               <div className="absolute top-0 right-0 z-20 bg-gold-primary border-4 border-sacral-blue p-3 rounded-full shadow-2xl rotate-12">
                 <CrossIcon className="w-6 h-6 text-white" />
               </div>
@@ -332,8 +303,6 @@ export default function Home() {
           </div>
         </motion.div>
 
-
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -350,9 +319,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ── Our Congregation ── */}
       <section id="about" className="w-full py-32 px-6 relative overflow-hidden">
-        {/* Background decorations */}
         <div className="absolute top-20 right-0 w-96 h-96 bg-gold-primary/5 rounded-full blur-[80px] pointer-events-none" />
         <div className="absolute bottom-20 left-0 w-80 h-80 bg-sacral-blue/5 rounded-full blur-[80px] pointer-events-none" />
 
@@ -366,7 +333,6 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start mb-32">
             <motion.div {...fadeIn} className="space-y-8">
               <div className="text-deep-slate/80 leading-relaxed font-inter space-y-6">
-                {/* Decorative quote block */}
                 <div className="relative">
                   <div className="absolute -left-2 top-0 bottom-0 w-1 bg-gradient-to-b from-gold-primary/80 via-gold-primary/40 to-transparent rounded-full" />
                   <p className="text-2xl font-playfair italic text-sacral-blue pl-8 py-2">
@@ -746,7 +712,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Contact card */}
             <div className="p-10 rounded-[2.5rem] bg-sacral-blue text-white relative overflow-hidden group">
               <div className="absolute inset-0 opacity-5"
                 style={{backgroundImage:"radial-gradient(circle, rgba(197,165,114,0.8) 1px, transparent 1px)", backgroundSize:"20px 20px"}}
