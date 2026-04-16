@@ -1,6 +1,6 @@
 export const churchContent = {
   churchName: {
-    primary: "ST. PETER & ST. PAUL",
+    primary: "ST. PETER'S & ST. PAUL'S",
     secondary: "Orthodox Syrian Church, Victoria",
   },
   navLinks: [
@@ -20,9 +20,9 @@ export const churchContent = {
   ourCongregation: {
     title: "Our Congregation",
     established: "Established 2023",
-    quote: "St. Peter and St. Paul's Syrian Orthodox Congregation, Victoria, British Columbia",
+    quote: "St. Peter's and St. Paul's Syrian Orthodox Congregation, Victoria, British Columbia",
     history: [
-      "St. Peter and St. Paul's Syrian Orthodox Congregation in Victoria, British Columbia is a parish of the Malankara Orthodox Syrian Church under the Diocese of Canada.",
+      "St. Peter's and St. Paul's Syrian Orthodox Congregation in Victoria, British Columbia is a parish of the Malankara Orthodox Syrian Church under the Diocese of Canada.",
       "The congregation was founded on February 4, 2023. At that time, it fell under the Southwest American Diocese, and permission to establish the congregation was granted by His Grace Thomas Mar Ivanios, the then Bishop of the Diocese of Southwest America. The Rev. Fr. Zera Paul served as the first vicar.",
       "When the Canada Diocese was established, its assistant metropolitan was appointed. Consequently, the congregation came under the pastoral care of H.G. Zacharias Mar Nicholovos, Metropolitan of the Northeast American Diocese, who is the assistant metropolitan of the Canada Diocese.",
     ],
