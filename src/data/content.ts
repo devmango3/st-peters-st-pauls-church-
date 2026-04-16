@@ -14,7 +14,7 @@ export const churchContent = {
   hero: {
     title: "Faith Rooted in",
     subtitle: "Apostolic Tradition",
-    description: "Welcome to the St. Peter and St. Paul Orthodox Syrian Congregation in Victoria, BC. A community preserving the timeless faith established by St. Thomas.",
+    description: "Welcome to the St. Peter's and St. Paul's Orthodox Syrian Congregation in Victoria, BC. A community preserving the timeless faith established by St. Thomas.",
     label: "A Congregation of the Malankara Orthodox Syrian Church",
   },
   ourCongregation: {
