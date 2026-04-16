@@ -88,7 +88,7 @@ export const churchContent = {
     email: "stpetersandstpaulsmosc@gmail.com",
   },
   tradition: {
-    description: "St. Peter and St. Paul Orthodox Syrian Congregation, Victoria is a growing faith community under the Canada Diocese of the Malankara Orthodox Syrian Church.",
+    description: "St. Peter's and St. Paul's Orthodox Syrian Congregation, Victoria is a growing faith community under the Canada Diocese of the Malankara Orthodox Syrian Church.",
   },
   footer: {
     description: "Providing a sanctuary for spiritual growth, fellowship, and traditional Orthodox worship in British Columbia.",
